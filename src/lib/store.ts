@@ -37,11 +37,75 @@ export interface Assessment {
   grade?: number | null;
 }
 
+export interface Transaction {
+  id: string;
+  date: string;
+  amount: number; // + income, - expense
+  category: string;
+  note: string;
+}
+
+export interface Budget {
+  id: string;
+  category: string;
+  monthlyLimit: number;
+}
+
+export interface Task {
+  id: string;
+  title: string;
+  done: boolean;
+  priority: Priority;
+  dueDate?: string;
+  tag?: string;
+  createdAt: string;
+}
+
+export interface Habit {
+  id: string;
+  name: string;
+  emoji: string;
+  completions: string[]; // YYYY-MM-DD
+}
+
+export interface Goal {
+  id: string;
+  title: string;
+  category: "academic" | "finance" | "health" | "personal" | "career";
+  target: number;
+  current: number;
+  unit: string;
+  deadline: string;
+  milestones: { id: string; title: string; done: boolean }[];
+}
+
+export interface StudySession {
+  id: string;
+  courseId?: string;
+  date: string;
+  minutes: number;
+  focusScore: number; // 1-5
+}
+
+export interface ChatMessage {
+  id: string;
+  role: "user" | "assistant";
+  content: string;
+  createdAt: string;
+}
+
 export interface AppState {
   user: { name: string };
   semesters: Semester[];
   courses: Course[];
   assessments: Assessment[];
+  transactions: Transaction[];
+  budgets: Budget[];
+  tasks: Task[];
+  habits: Habit[];
+  goals: Goal[];
+  sessions: StudySession[];
+  chat: ChatMessage[];
 }
 
 const STORAGE_KEY = "sakif-os:v1";
