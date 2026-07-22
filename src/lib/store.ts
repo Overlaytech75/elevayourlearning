@@ -149,6 +149,56 @@ function seed(): AppState {
       { id: uid(), courseId: c1, title: "Assignment 1 — Loops", type: "Assignment", weight: 15, dueDate: in3(-4), status: "graded", priority: "medium", estimatedHours: 6, actualHours: 7, difficulty: 2, progress: 100, notes: "", grade: 88 },
       { id: uid(), courseId: c2, title: "Final Project Proposal", type: "Project", weight: 10, dueDate: in3(20), status: "not_started", priority: "low", estimatedHours: 5, actualHours: 0, difficulty: 3, progress: 0, notes: "" },
     ],
+    transactions: [
+      { id: uid(), date: in3(-1), amount: 1200, category: "Income", note: "Part-time job" },
+      { id: uid(), date: in3(-2), amount: -18.5, category: "Food", note: "Lunch — campus cafe" },
+      { id: uid(), date: in3(-3), amount: -42, category: "Transport", note: "Weekly bus pass" },
+      { id: uid(), date: in3(-4), amount: -120, category: "Books", note: "Networking textbook" },
+      { id: uid(), date: in3(-6), amount: -65, category: "Food", note: "Groceries" },
+      { id: uid(), date: in3(-8), amount: -14.99, category: "Subscriptions", note: "Streaming" },
+      { id: uid(), date: in3(-10), amount: -60, category: "Social", note: "Movie + dinner" },
+    ],
+    budgets: [
+      { id: uid(), category: "Food", monthlyLimit: 350 },
+      { id: uid(), category: "Transport", monthlyLimit: 180 },
+      { id: uid(), category: "Books", monthlyLimit: 150 },
+      { id: uid(), category: "Subscriptions", monthlyLimit: 60 },
+      { id: uid(), category: "Social", monthlyLimit: 200 },
+    ],
+    tasks: [
+      { id: uid(), title: "Read Chapter 4 — Databases", done: false, priority: "high", dueDate: in3(1), tag: "Study", createdAt: in3(-1) },
+      { id: uid(), title: "Email advisor about internship", done: false, priority: "medium", tag: "Career", createdAt: in3(-1) },
+      { id: uid(), title: "Renew student ID", done: false, priority: "low", tag: "Admin", createdAt: in3(-2) },
+      { id: uid(), title: "Gym session", done: true, priority: "medium", tag: "Health", createdAt: in3(-1) },
+    ],
+    habits: [
+      { id: uid(), name: "Deep work", emoji: "🎯", completions: [] },
+      { id: uid(), name: "Read 20 pages", emoji: "📚", completions: [] },
+      { id: uid(), name: "Exercise", emoji: "🏃", completions: [] },
+      { id: uid(), name: "Sleep by 11pm", emoji: "🌙", completions: [] },
+    ],
+    goals: [
+      { id: uid(), title: "GPA ≥ 3.7 this semester", category: "academic", target: 3.7, current: 3.55, unit: "GPA", deadline: in3(90), milestones: [
+        { id: uid(), title: "Ace midterms", done: false },
+        { id: uid(), title: "Finish all labs on time", done: true },
+      ] },
+      { id: uid(), title: "Save $2,000 buffer", category: "finance", target: 2000, current: 620, unit: "$", deadline: in3(180), milestones: [
+        { id: uid(), title: "Automate transfer", done: true },
+      ] },
+      { id: uid(), title: "Land summer internship", category: "career", target: 10, current: 4, unit: "applications", deadline: in3(60), milestones: [
+        { id: uid(), title: "Polish resume", done: true },
+        { id: uid(), title: "Ship portfolio project", done: false },
+      ] },
+    ],
+    sessions: [
+      { id: uid(), courseId: c2, date: in3(-1), minutes: 90, focusScore: 4 },
+      { id: uid(), courseId: c4, date: in3(-1), minutes: 60, focusScore: 3 },
+      { id: uid(), courseId: c1, date: in3(-2), minutes: 45, focusScore: 5 },
+      { id: uid(), courseId: c3, date: in3(-3), minutes: 75, focusScore: 4 },
+      { id: uid(), courseId: c2, date: in3(-4), minutes: 120, focusScore: 5 },
+      { id: uid(), courseId: c4, date: in3(-6), minutes: 30, focusScore: 2 },
+    ],
+    chat: [],
   };
 }
 
