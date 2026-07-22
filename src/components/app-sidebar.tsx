@@ -3,10 +3,12 @@ import {
   LayoutDashboard,
   GraduationCap,
   CalendarClock,
-  NotebookPen,
   Wallet,
   Target,
   Sparkles,
+  CheckSquare,
+  BarChart3,
+  Bot,
 } from "lucide-react";
 
 import {
@@ -26,12 +28,14 @@ const primary = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Academics", url: "/academics", icon: GraduationCap },
   { title: "Timeline", url: "/timeline", icon: CalendarClock },
+  { title: "Productivity", url: "/productivity", icon: CheckSquare },
+  { title: "Finance", url: "/finance", icon: Wallet },
 ];
 
-const soon = [
-  { title: "Notes", url: "/notes", icon: NotebookPen },
-  { title: "Finance", url: "/finance", icon: Wallet },
+const secondary = [
   { title: "Goals", url: "/goals", icon: Target },
+  { title: "Analytics", url: "/analytics", icon: BarChart3 },
+  { title: "AI Mentor", url: "/mentor", icon: Bot },
 ];
 
 export function AppSidebar() {
@@ -72,14 +76,16 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Coming soon</SidebarGroupLabel>
+          <SidebarGroupLabel>Life</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {soon.map((item) => (
+              {secondary.map((item) => (
                 <SidebarMenuItem key={item.url}>
-                  <SidebarMenuButton disabled tooltip={`${item.title} — coming soon`}>
-                    <item.icon />
-                    <span>{item.title}</span>
+                  <SidebarMenuButton asChild isActive={isActive(item.url)} tooltip={item.title}>
+                    <Link to={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
