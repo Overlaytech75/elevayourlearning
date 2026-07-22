@@ -211,7 +211,10 @@ function load(): AppState {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
       return s;
     }
-    return JSON.parse(raw) as AppState;
+    const parsed = JSON.parse(raw) as Partial<AppState>;
+    const base = seed();
+    // Merge: keep existing keys, fill missing ones from seed so upgrades don't wipe data.
+    return { ...base, ...parsed } as AppState;
   } catch {
     return seed();
   }
