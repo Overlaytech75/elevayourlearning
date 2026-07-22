@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       { title: "Today · Atlas" },
       { name: "description", content: "Your calm command center: today's classes, deadlines, and what to focus on next." },
       { property: "og:title", content: "Today · Atlas" },
-      { property: "og:description", content: "Your calm command center for a great study day." },
+      { property: "og:description", content: "Your calm command center: today's classes, deadlines, and what to focus on next." },
     ],
   }),
   component: Dashboard,
