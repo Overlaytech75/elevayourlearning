@@ -309,6 +309,104 @@ export const actions = {
     s.assessments = s.assessments.filter((a) => a.id !== id);
     persist();
   },
+  // finance
+  addTransaction(t: Omit<Transaction, "id">) {
+    ensure().transactions.push({ ...t, id: uid() });
+    persist();
+  },
+  deleteTransaction(id: string) {
+    const s = ensure();
+    s.transactions = s.transactions.filter((t) => t.id !== id);
+    persist();
+  },
+  addBudget(b: Omit<Budget, "id">) {
+    ensure().budgets.push({ ...b, id: uid() });
+    persist();
+  },
+  updateBudget(id: string, patch: Partial<Budget>) {
+    const b = ensure().budgets.find((x) => x.id === id);
+    if (b) Object.assign(b, patch);
+    persist();
+  },
+  deleteBudget(id: string) {
+    const s = ensure();
+    s.budgets = s.budgets.filter((b) => b.id !== id);
+    persist();
+  },
+  // tasks
+  addTask(t: Omit<Task, "id" | "createdAt">) {
+    ensure().tasks.push({ ...t, id: uid(), createdAt: new Date().toISOString() });
+    persist();
+  },
+  toggleTask(id: string) {
+    const t = ensure().tasks.find((x) => x.id === id);
+    if (t) t.done = !t.done;
+    persist();
+  },
+  deleteTask(id: string) {
+    const s = ensure();
+    s.tasks = s.tasks.filter((t) => t.id !== id);
+    persist();
+  },
+  // habits
+  addHabit(h: Omit<Habit, "id" | "completions">) {
+    ensure().habits.push({ ...h, id: uid(), completions: [] });
+    persist();
+  },
+  toggleHabitToday(id: string) {
+    const h = ensure().habits.find((x) => x.id === id);
+    if (!h) return;
+    const today = new Date().toISOString().slice(0, 10);
+    h.completions = h.completions.includes(today)
+      ? h.completions.filter((d) => d !== today)
+      : [...h.completions, today];
+    persist();
+  },
+  deleteHabit(id: string) {
+    const s = ensure();
+    s.habits = s.habits.filter((h) => h.id !== id);
+    persist();
+  },
+  // goals
+  addGoal(g: Omit<Goal, "id" | "milestones"> & { milestones?: Goal["milestones"] }) {
+    ensure().goals.push({ ...g, id: uid(), milestones: g.milestones ?? [] });
+    persist();
+  },
+  updateGoal(id: string, patch: Partial<Goal>) {
+    const g = ensure().goals.find((x) => x.id === id);
+    if (g) Object.assign(g, patch);
+    persist();
+  },
+  deleteGoal(id: string) {
+    const s = ensure();
+    s.goals = s.goals.filter((g) => g.id !== id);
+    persist();
+  },
+  toggleMilestone(goalId: string, milestoneId: string) {
+    const g = ensure().goals.find((x) => x.id === goalId);
+    const m = g?.milestones.find((x) => x.id === milestoneId);
+    if (m) m.done = !m.done;
+    persist();
+  },
+  addMilestone(goalId: string, title: string) {
+    const g = ensure().goals.find((x) => x.id === goalId);
+    if (g) g.milestones.push({ id: uid(), title, done: false });
+    persist();
+  },
+  // sessions
+  addSession(s: Omit<StudySession, "id">) {
+    ensure().sessions.push({ ...s, id: uid() });
+    persist();
+  },
+  // chat
+  addChatMessage(m: Omit<ChatMessage, "id" | "createdAt">) {
+    ensure().chat.push({ ...m, id: uid(), createdAt: new Date().toISOString() });
+    persist();
+  },
+  clearChat() {
+    ensure().chat = [];
+    persist();
+  },
   resetDemo() {
     state = seed();
     persist();
