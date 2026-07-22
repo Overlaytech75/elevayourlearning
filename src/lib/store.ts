@@ -248,6 +248,13 @@ const EMPTY_STATE: AppState = {
   semesters: [],
   courses: [],
   assessments: [],
+  transactions: [],
+  budgets: [],
+  tasks: [],
+  habits: [],
+  goals: [],
+  sessions: [],
+  chat: [],
 };
 
 export function useAppState<T>(selector: (s: AppState) => T): T {
