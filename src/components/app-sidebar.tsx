@@ -76,14 +76,16 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Coming soon</SidebarGroupLabel>
+          <SidebarGroupLabel>Life</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {soon.map((item) => (
+              {secondary.map((item) => (
                 <SidebarMenuItem key={item.url}>
-                  <SidebarMenuButton disabled tooltip={`${item.title} — coming soon`}>
-                    <item.icon />
-                    <span>{item.title}</span>
+                  <SidebarMenuButton asChild isActive={isActive(item.url)} tooltip={item.title}>
+                    <Link to={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
