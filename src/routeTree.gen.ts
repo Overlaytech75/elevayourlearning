@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as ProductivityRouteImport } from './routes/productivity'
+import { Route as MentorRouteImport } from './routes/mentor'
+import { Route as GoalsRouteImport } from './routes/goals'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -25,9 +28,24 @@ const ProductivityRoute = ProductivityRouteImport.update({
   path: '/productivity',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MentorRoute = MentorRouteImport.update({
+  id: '/mentor',
+  path: '/mentor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GoalsRoute = GoalsRouteImport.update({
+  id: '/goals',
+  path: '/goals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AcademicsRoute = AcademicsRouteImport.update({
@@ -44,14 +62,20 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
+  '/analytics': typeof AnalyticsRoute
   '/finance': typeof FinanceRoute
+  '/goals': typeof GoalsRoute
+  '/mentor': typeof MentorRoute
   '/productivity': typeof ProductivityRoute
   '/timeline': typeof TimelineRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
+  '/analytics': typeof AnalyticsRoute
   '/finance': typeof FinanceRoute
+  '/goals': typeof GoalsRoute
+  '/mentor': typeof MentorRoute
   '/productivity': typeof ProductivityRoute
   '/timeline': typeof TimelineRoute
 }
@@ -59,20 +83,42 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
+  '/analytics': typeof AnalyticsRoute
   '/finance': typeof FinanceRoute
+  '/goals': typeof GoalsRoute
+  '/mentor': typeof MentorRoute
   '/productivity': typeof ProductivityRoute
   '/timeline': typeof TimelineRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/academics' | '/finance' | '/productivity' | '/timeline'
+  fullPaths:
+    | '/'
+    | '/academics'
+    | '/analytics'
+    | '/finance'
+    | '/goals'
+    | '/mentor'
+    | '/productivity'
+    | '/timeline'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/academics' | '/finance' | '/productivity' | '/timeline'
+  to:
+    | '/'
+    | '/academics'
+    | '/analytics'
+    | '/finance'
+    | '/goals'
+    | '/mentor'
+    | '/productivity'
+    | '/timeline'
   id:
     | '__root__'
     | '/'
     | '/academics'
+    | '/analytics'
     | '/finance'
+    | '/goals'
+    | '/mentor'
     | '/productivity'
     | '/timeline'
   fileRoutesById: FileRoutesById
@@ -80,7 +126,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AcademicsRoute: typeof AcademicsRoute
+  AnalyticsRoute: typeof AnalyticsRoute
   FinanceRoute: typeof FinanceRoute
+  GoalsRoute: typeof GoalsRoute
+  MentorRoute: typeof MentorRoute
   ProductivityRoute: typeof ProductivityRoute
   TimelineRoute: typeof TimelineRoute
 }
@@ -101,11 +150,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductivityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mentor': {
+      id: '/mentor'
+      path: '/mentor'
+      fullPath: '/mentor'
+      preLoaderRoute: typeof MentorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/goals': {
+      id: '/goals'
+      path: '/goals'
+      fullPath: '/goals'
+      preLoaderRoute: typeof GoalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/finance': {
       id: '/finance'
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/academics': {
@@ -128,7 +198,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcademicsRoute: AcademicsRoute,
+  AnalyticsRoute: AnalyticsRoute,
   FinanceRoute: FinanceRoute,
+  GoalsRoute: GoalsRoute,
+  MentorRoute: MentorRoute,
   ProductivityRoute: ProductivityRoute,
   TimelineRoute: TimelineRoute,
 }
