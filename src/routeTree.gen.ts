@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as ProductivityRouteImport } from './routes/productivity'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductivityRoute = ProductivityRouteImport.update({
+  id: '/productivity',
+  path: '/productivity',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceRoute = FinanceRouteImport.update({
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
   '/finance': typeof FinanceRoute
+  '/productivity': typeof ProductivityRoute
   '/timeline': typeof TimelineRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
   '/finance': typeof FinanceRoute
+  '/productivity': typeof ProductivityRoute
   '/timeline': typeof TimelineRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,28 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
   '/finance': typeof FinanceRoute
+  '/productivity': typeof ProductivityRoute
   '/timeline': typeof TimelineRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/academics' | '/finance' | '/timeline'
+  fullPaths: '/' | '/academics' | '/finance' | '/productivity' | '/timeline'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/academics' | '/finance' | '/timeline'
-  id: '__root__' | '/' | '/academics' | '/finance' | '/timeline'
+  to: '/' | '/academics' | '/finance' | '/productivity' | '/timeline'
+  id:
+    | '__root__'
+    | '/'
+    | '/academics'
+    | '/finance'
+    | '/productivity'
+    | '/timeline'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AcademicsRoute: typeof AcademicsRoute
   FinanceRoute: typeof FinanceRoute
+  ProductivityRoute: typeof ProductivityRoute
   TimelineRoute: typeof TimelineRoute
 }
 
@@ -76,6 +92,13 @@ declare module '@tanstack/react-router' {
       path: '/timeline'
       fullPath: '/timeline'
       preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/productivity': {
+      id: '/productivity'
+      path: '/productivity'
+      fullPath: '/productivity'
+      preLoaderRoute: typeof ProductivityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance': {
@@ -106,6 +129,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcademicsRoute: AcademicsRoute,
   FinanceRoute: FinanceRoute,
+  ProductivityRoute: ProductivityRoute,
   TimelineRoute: TimelineRoute,
 }
 export const routeTree = rootRouteImport
