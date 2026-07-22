@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 
 export type Priority = "low" | "medium" | "high";
 export type AssessmentStatus = "not_started" | "in_progress" | "submitted" | "graded";
@@ -127,15 +127,29 @@ export function subscribe(fn: () => void) {
   return () => listeners.delete(fn);
 }
 
+// Stable empty snapshot used for SSR and first client render to avoid
+// hydration mismatches (localStorage is only available after mount).
+const EMPTY_STATE: AppState = {
+  user: { name: "Sakif" },
+  semesters: [],
+  courses: [],
+  assessments: [],
+};
+
 export function useAppState<T>(selector: (s: AppState) => T): T {
-  return useSyncExternalStore(
-    (cb) => {
-      listeners.add(cb);
-      return () => listeners.delete(cb);
-    },
-    () => selector(ensure()),
-    () => selector(seed()),
-  );
+  const [value, setValue] = useState<T>(() => selector(EMPTY_STATE));
+
+  useEffect(() => {
+    setValue(selector(ensure()));
+    const l = () => setValue(selector(ensure()));
+    listeners.add(l);
+    return () => {
+      listeners.delete(l);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return value;
 }
 
 // --- actions ---
