@@ -69,7 +69,7 @@ export function AppSidebar() {
               {primary.map((item) => (
                 <SidebarMenuItem key={item.url}>
                   <SidebarMenuButton asChild isActive={isActive(item.url)} tooltip={item.title}>
-                    <Link to={item.url}>
+                    <Link to={item.url} onClick={handleNav}>
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
@@ -87,7 +87,7 @@ export function AppSidebar() {
               {secondary.map((item) => (
                 <SidebarMenuItem key={item.url}>
                   <SidebarMenuButton asChild isActive={isActive(item.url)} tooltip={item.title}>
-                    <Link to={item.url}>
+                    <Link to={item.url} onClick={handleNav}>
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
