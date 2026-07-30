@@ -18,6 +18,7 @@ import { Route as GoalsRouteImport } from './routes/goals'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as AiToolsRouteImport } from './routes/ai-tools'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -66,6 +67,11 @@ const AnalyticsRoute = AnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiToolsRoute = AiToolsRouteImport.update({
+  id: '/ai-tools',
+  path: '/ai-tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AcademicsRoute = AcademicsRouteImport.update({
   id: '/academics',
   path: '/academics',
@@ -80,6 +86,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
+  '/ai-tools': typeof AiToolsRoute
   '/analytics': typeof AnalyticsRoute
   '/auth': typeof AuthRoute
   '/finance': typeof FinanceRoute
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
+  '/ai-tools': typeof AiToolsRoute
   '/analytics': typeof AnalyticsRoute
   '/auth': typeof AuthRoute
   '/finance': typeof FinanceRoute
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
+  '/ai-tools': typeof AiToolsRoute
   '/analytics': typeof AnalyticsRoute
   '/auth': typeof AuthRoute
   '/finance': typeof FinanceRoute
@@ -122,6 +131,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/academics'
+    | '/ai-tools'
     | '/analytics'
     | '/auth'
     | '/finance'
@@ -135,6 +145,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/academics'
+    | '/ai-tools'
     | '/analytics'
     | '/auth'
     | '/finance'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/academics'
+    | '/ai-tools'
     | '/analytics'
     | '/auth'
     | '/finance'
@@ -162,6 +174,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AcademicsRoute: typeof AcademicsRoute
+  AiToolsRoute: typeof AiToolsRoute
   AnalyticsRoute: typeof AnalyticsRoute
   AuthRoute: typeof AuthRoute
   FinanceRoute: typeof FinanceRoute
@@ -238,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai-tools': {
+      id: '/ai-tools'
+      path: '/ai-tools'
+      fullPath: '/ai-tools'
+      preLoaderRoute: typeof AiToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/academics': {
       id: '/academics'
       path: '/academics'
@@ -258,6 +278,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcademicsRoute: AcademicsRoute,
+  AiToolsRoute: AiToolsRoute,
   AnalyticsRoute: AnalyticsRoute,
   AuthRoute: AuthRoute,
   FinanceRoute: FinanceRoute,
