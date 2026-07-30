@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as StudyRouteImport } from './routes/study'
 import { Route as ProductivityRouteImport } from './routes/productivity'
 import { Route as MentorRouteImport } from './routes/mentor'
 import { Route as GoalsRouteImport } from './routes/goals'
@@ -22,6 +23,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyRoute = StudyRouteImport.update({
+  id: '/study',
+  path: '/study',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductivityRoute = ProductivityRouteImport.update({
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/goals': typeof GoalsRoute
   '/mentor': typeof MentorRoute
   '/productivity': typeof ProductivityRoute
+  '/study': typeof StudyRoute
   '/timeline': typeof TimelineRoute
 }
 export interface FileRoutesByTo {
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/goals': typeof GoalsRoute
   '/mentor': typeof MentorRoute
   '/productivity': typeof ProductivityRoute
+  '/study': typeof StudyRoute
   '/timeline': typeof TimelineRoute
 }
 export interface FileRoutesById {
@@ -97,6 +105,7 @@ export interface FileRoutesById {
   '/goals': typeof GoalsRoute
   '/mentor': typeof MentorRoute
   '/productivity': typeof ProductivityRoute
+  '/study': typeof StudyRoute
   '/timeline': typeof TimelineRoute
 }
 export interface FileRouteTypes {
@@ -110,6 +119,7 @@ export interface FileRouteTypes {
     | '/goals'
     | '/mentor'
     | '/productivity'
+    | '/study'
     | '/timeline'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -121,6 +131,7 @@ export interface FileRouteTypes {
     | '/goals'
     | '/mentor'
     | '/productivity'
+    | '/study'
     | '/timeline'
   id:
     | '__root__'
@@ -132,6 +143,7 @@ export interface FileRouteTypes {
     | '/goals'
     | '/mentor'
     | '/productivity'
+    | '/study'
     | '/timeline'
   fileRoutesById: FileRoutesById
 }
@@ -144,6 +156,7 @@ export interface RootRouteChildren {
   GoalsRoute: typeof GoalsRoute
   MentorRoute: typeof MentorRoute
   ProductivityRoute: typeof ProductivityRoute
+  StudyRoute: typeof StudyRoute
   TimelineRoute: typeof TimelineRoute
 }
 
@@ -154,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/timeline'
       fullPath: '/timeline'
       preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study': {
+      id: '/study'
+      path: '/study'
+      fullPath: '/study'
+      preLoaderRoute: typeof StudyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/productivity': {
@@ -224,6 +244,7 @@ const rootRouteChildren: RootRouteChildren = {
   GoalsRoute: GoalsRoute,
   MentorRoute: MentorRoute,
   ProductivityRoute: ProductivityRoute,
+  StudyRoute: StudyRoute,
   TimelineRoute: TimelineRoute,
 }
 export const routeTree = rootRouteImport
