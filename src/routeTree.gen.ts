@@ -14,6 +14,7 @@ import { Route as ProductivityRouteImport } from './routes/productivity'
 import { Route as MentorRouteImport } from './routes/mentor'
 import { Route as GoalsRouteImport } from './routes/goals'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as IndexRouteImport } from './routes/index'
@@ -43,6 +44,11 @@ const FinanceRoute = FinanceRouteImport.update({
   path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AnalyticsRoute = AnalyticsRouteImport.update({
   id: '/analytics',
   path: '/analytics',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
   '/analytics': typeof AnalyticsRoute
+  '/auth': typeof AuthRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
   '/mentor': typeof MentorRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
   '/analytics': typeof AnalyticsRoute
+  '/auth': typeof AuthRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
   '/mentor': typeof MentorRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/academics': typeof AcademicsRoute
   '/analytics': typeof AnalyticsRoute
+  '/auth': typeof AuthRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
   '/mentor': typeof MentorRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/academics'
     | '/analytics'
+    | '/auth'
     | '/finance'
     | '/goals'
     | '/mentor'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/academics'
     | '/analytics'
+    | '/auth'
     | '/finance'
     | '/goals'
     | '/mentor'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/academics'
     | '/analytics'
+    | '/auth'
     | '/finance'
     | '/goals'
     | '/mentor'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AcademicsRoute: typeof AcademicsRoute
   AnalyticsRoute: typeof AnalyticsRoute
+  AuthRoute: typeof AuthRoute
   FinanceRoute: typeof FinanceRoute
   GoalsRoute: typeof GoalsRoute
   MentorRoute: typeof MentorRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/analytics': {
       id: '/analytics'
       path: '/analytics'
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcademicsRoute: AcademicsRoute,
   AnalyticsRoute: AnalyticsRoute,
+  AuthRoute: AuthRoute,
   FinanceRoute: FinanceRoute,
   GoalsRoute: GoalsRoute,
   MentorRoute: MentorRoute,
