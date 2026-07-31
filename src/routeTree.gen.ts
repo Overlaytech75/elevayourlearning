@@ -17,6 +17,7 @@ import { Route as MentorRouteImport } from './routes/mentor'
 import { Route as InternationalRouteImport } from './routes/international'
 import { Route as GoalsRouteImport } from './routes/goals'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as CareerRouteImport } from './routes/career'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AiToolsRouteImport } from './routes/ai-tools'
@@ -63,6 +64,11 @@ const FinanceRoute = FinanceRouteImport.update({
   path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareerRoute = CareerRouteImport.update({
+  id: '/career',
+  path: '/career',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/ai-tools': typeof AiToolsRoute
   '/analytics': typeof AnalyticsRoute
   '/auth': typeof AuthRoute
+  '/career': typeof CareerRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
   '/international': typeof InternationalRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/ai-tools': typeof AiToolsRoute
   '/analytics': typeof AnalyticsRoute
   '/auth': typeof AuthRoute
+  '/career': typeof CareerRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
   '/international': typeof InternationalRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/ai-tools': typeof AiToolsRoute
   '/analytics': typeof AnalyticsRoute
   '/auth': typeof AuthRoute
+  '/career': typeof CareerRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
   '/international': typeof InternationalRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/ai-tools'
     | '/analytics'
     | '/auth'
+    | '/career'
     | '/finance'
     | '/goals'
     | '/international'
@@ -158,6 +168,7 @@ export interface FileRouteTypes {
     | '/ai-tools'
     | '/analytics'
     | '/auth'
+    | '/career'
     | '/finance'
     | '/goals'
     | '/international'
@@ -173,6 +184,7 @@ export interface FileRouteTypes {
     | '/ai-tools'
     | '/analytics'
     | '/auth'
+    | '/career'
     | '/finance'
     | '/goals'
     | '/international'
@@ -189,6 +201,7 @@ export interface RootRouteChildren {
   AiToolsRoute: typeof AiToolsRoute
   AnalyticsRoute: typeof AnalyticsRoute
   AuthRoute: typeof AuthRoute
+  CareerRoute: typeof CareerRoute
   FinanceRoute: typeof FinanceRoute
   GoalsRoute: typeof GoalsRoute
   InternationalRoute: typeof InternationalRoute
@@ -257,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/career': {
+      id: '/career'
+      path: '/career'
+      fullPath: '/career'
+      preLoaderRoute: typeof CareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -301,6 +321,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiToolsRoute: AiToolsRoute,
   AnalyticsRoute: AnalyticsRoute,
   AuthRoute: AuthRoute,
+  CareerRoute: CareerRoute,
   FinanceRoute: FinanceRoute,
   GoalsRoute: GoalsRoute,
   InternationalRoute: InternationalRoute,

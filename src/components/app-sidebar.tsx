@@ -48,9 +48,12 @@ const learn = [
 
 const secondary = [
   { title: "Goals", url: "/goals", icon: Target },
+  { title: "International", url: "/international", icon: Globe2 },
+  { title: "Career", url: "/career", icon: Briefcase },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
   { title: "AI Mentor", url: "/mentor", icon: Bot },
 ];
+
 
 export function AppSidebar() {
   const { mode, setMode } = useTheme();
