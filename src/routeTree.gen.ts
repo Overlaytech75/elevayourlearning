@@ -14,6 +14,7 @@ import { Route as StudyRouteImport } from './routes/study'
 import { Route as ProductivityRouteImport } from './routes/productivity'
 import { Route as NotesRouteImport } from './routes/notes'
 import { Route as MentorRouteImport } from './routes/mentor'
+import { Route as InternationalRouteImport } from './routes/international'
 import { Route as GoalsRouteImport } from './routes/goals'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -45,6 +46,11 @@ const NotesRoute = NotesRouteImport.update({
 const MentorRoute = MentorRouteImport.update({
   id: '/mentor',
   path: '/mentor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InternationalRoute = InternationalRouteImport.update({
+  id: '/international',
+  path: '/international',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GoalsRoute = GoalsRouteImport.update({
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
+  '/international': typeof InternationalRoute
   '/mentor': typeof MentorRoute
   '/notes': typeof NotesRoute
   '/productivity': typeof ProductivityRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
+  '/international': typeof InternationalRoute
   '/mentor': typeof MentorRoute
   '/notes': typeof NotesRoute
   '/productivity': typeof ProductivityRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
+  '/international': typeof InternationalRoute
   '/mentor': typeof MentorRoute
   '/notes': typeof NotesRoute
   '/productivity': typeof ProductivityRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/finance'
     | '/goals'
+    | '/international'
     | '/mentor'
     | '/notes'
     | '/productivity'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/finance'
     | '/goals'
+    | '/international'
     | '/mentor'
     | '/notes'
     | '/productivity'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/finance'
     | '/goals'
+    | '/international'
     | '/mentor'
     | '/notes'
     | '/productivity'
@@ -179,6 +191,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   FinanceRoute: typeof FinanceRoute
   GoalsRoute: typeof GoalsRoute
+  InternationalRoute: typeof InternationalRoute
   MentorRoute: typeof MentorRoute
   NotesRoute: typeof NotesRoute
   ProductivityRoute: typeof ProductivityRoute
@@ -221,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/mentor'
       fullPath: '/mentor'
       preLoaderRoute: typeof MentorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/international': {
+      id: '/international'
+      path: '/international'
+      fullPath: '/international'
+      preLoaderRoute: typeof InternationalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/goals': {
@@ -283,6 +303,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   FinanceRoute: FinanceRoute,
   GoalsRoute: GoalsRoute,
+  InternationalRoute: InternationalRoute,
   MentorRoute: MentorRoute,
   NotesRoute: NotesRoute,
   ProductivityRoute: ProductivityRoute,
@@ -292,13 +313,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
