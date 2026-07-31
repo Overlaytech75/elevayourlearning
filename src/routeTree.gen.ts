@@ -14,8 +14,10 @@ import { Route as StudyRouteImport } from './routes/study'
 import { Route as ProductivityRouteImport } from './routes/productivity'
 import { Route as NotesRouteImport } from './routes/notes'
 import { Route as MentorRouteImport } from './routes/mentor'
+import { Route as InternationalRouteImport } from './routes/international'
 import { Route as GoalsRouteImport } from './routes/goals'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as CareerRouteImport } from './routes/career'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AiToolsRouteImport } from './routes/ai-tools'
@@ -47,6 +49,11 @@ const MentorRoute = MentorRouteImport.update({
   path: '/mentor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InternationalRoute = InternationalRouteImport.update({
+  id: '/international',
+  path: '/international',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GoalsRoute = GoalsRouteImport.update({
   id: '/goals',
   path: '/goals',
@@ -55,6 +62,11 @@ const GoalsRoute = GoalsRouteImport.update({
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareerRoute = CareerRouteImport.update({
+  id: '/career',
+  path: '/career',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -89,8 +101,10 @@ export interface FileRoutesByFullPath {
   '/ai-tools': typeof AiToolsRoute
   '/analytics': typeof AnalyticsRoute
   '/auth': typeof AuthRoute
+  '/career': typeof CareerRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
+  '/international': typeof InternationalRoute
   '/mentor': typeof MentorRoute
   '/notes': typeof NotesRoute
   '/productivity': typeof ProductivityRoute
@@ -103,8 +117,10 @@ export interface FileRoutesByTo {
   '/ai-tools': typeof AiToolsRoute
   '/analytics': typeof AnalyticsRoute
   '/auth': typeof AuthRoute
+  '/career': typeof CareerRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
+  '/international': typeof InternationalRoute
   '/mentor': typeof MentorRoute
   '/notes': typeof NotesRoute
   '/productivity': typeof ProductivityRoute
@@ -118,8 +134,10 @@ export interface FileRoutesById {
   '/ai-tools': typeof AiToolsRoute
   '/analytics': typeof AnalyticsRoute
   '/auth': typeof AuthRoute
+  '/career': typeof CareerRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
+  '/international': typeof InternationalRoute
   '/mentor': typeof MentorRoute
   '/notes': typeof NotesRoute
   '/productivity': typeof ProductivityRoute
@@ -134,8 +152,10 @@ export interface FileRouteTypes {
     | '/ai-tools'
     | '/analytics'
     | '/auth'
+    | '/career'
     | '/finance'
     | '/goals'
+    | '/international'
     | '/mentor'
     | '/notes'
     | '/productivity'
@@ -148,8 +168,10 @@ export interface FileRouteTypes {
     | '/ai-tools'
     | '/analytics'
     | '/auth'
+    | '/career'
     | '/finance'
     | '/goals'
+    | '/international'
     | '/mentor'
     | '/notes'
     | '/productivity'
@@ -162,8 +184,10 @@ export interface FileRouteTypes {
     | '/ai-tools'
     | '/analytics'
     | '/auth'
+    | '/career'
     | '/finance'
     | '/goals'
+    | '/international'
     | '/mentor'
     | '/notes'
     | '/productivity'
@@ -177,8 +201,10 @@ export interface RootRouteChildren {
   AiToolsRoute: typeof AiToolsRoute
   AnalyticsRoute: typeof AnalyticsRoute
   AuthRoute: typeof AuthRoute
+  CareerRoute: typeof CareerRoute
   FinanceRoute: typeof FinanceRoute
   GoalsRoute: typeof GoalsRoute
+  InternationalRoute: typeof InternationalRoute
   MentorRoute: typeof MentorRoute
   NotesRoute: typeof NotesRoute
   ProductivityRoute: typeof ProductivityRoute
@@ -223,6 +249,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MentorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/international': {
+      id: '/international'
+      path: '/international'
+      fullPath: '/international'
+      preLoaderRoute: typeof InternationalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/goals': {
       id: '/goals'
       path: '/goals'
@@ -235,6 +268,13 @@ declare module '@tanstack/react-router' {
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/career': {
+      id: '/career'
+      path: '/career'
+      fullPath: '/career'
+      preLoaderRoute: typeof CareerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -281,8 +321,10 @@ const rootRouteChildren: RootRouteChildren = {
   AiToolsRoute: AiToolsRoute,
   AnalyticsRoute: AnalyticsRoute,
   AuthRoute: AuthRoute,
+  CareerRoute: CareerRoute,
   FinanceRoute: FinanceRoute,
   GoalsRoute: GoalsRoute,
+  InternationalRoute: InternationalRoute,
   MentorRoute: MentorRoute,
   NotesRoute: NotesRoute,
   ProductivityRoute: ProductivityRoute,
