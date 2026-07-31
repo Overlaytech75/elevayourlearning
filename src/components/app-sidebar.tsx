@@ -12,7 +12,10 @@ import {
   Timer,
   FileText,
   Wand2,
+  Globe2,
+  Briefcase,
   Moon,
+
   Sun,
 } from "lucide-react";
 

@@ -45,11 +45,12 @@ function Dashboard() {
   const [editing, setEditing] = useState<Assessment | null>(null);
 
   const now = useMemo(() => new Date(), []);
-  const today = now.toLocaleDateString(undefined, {
+  const today = now.toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
     day: "numeric",
   });
+
 
   const upcoming = useMemo(
     () =>
