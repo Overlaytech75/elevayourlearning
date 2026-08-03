@@ -14,9 +14,9 @@ import { useAppState, actions, type Assessment } from "@/lib/store";
 export const Route = createFileRoute("/academics")({
   head: () => ({
     meta: [
-      { title: "Academics · Atlas" },
+      { title: "Academics · Eleva" },
       { name: "description", content: "Semesters, courses, and assessments in one clean workspace." },
-      { property: "og:title", content: "Academics · Atlas" },
+      { property: "og:title", content: "Academics · Eleva" },
       { property: "og:description", content: "Track every assessment across every course, beautifully." },
     ],
   }),

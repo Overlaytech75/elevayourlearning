@@ -80,14 +80,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Today · Atlas" },
+      { title: "Today · Eleva" },
       {
         name: "description",
         content:
           "Your calm command center: today's classes, deadlines, and what to focus on next.",
       },
-      { name: "author", content: "Atlas" },
-      { property: "og:title", content: "Today · Atlas" },
+      { name: "author", content: "Eleva" },
+      { property: "og:title", content: "Today · Eleva" },
       {
         property: "og:description",
         content:
@@ -95,7 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Today · Atlas" },
+      { name: "twitter:title", content: "Today · Eleva" },
       { name: "twitter:description", content: "Your calm command center: today's classes, deadlines, and what to focus on next." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6edcf84d-81bf-4fdb-8dc7-e143a8f04385/id-preview-d820b9a0--2b68c050-4e7c-4129-9987-755dbcaa9a22.lovable.app-1784732754732.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6edcf84d-81bf-4fdb-8dc7-e143a8f04385/id-preview-d820b9a0--2b68c050-4e7c-4129-9987-755dbcaa9a22.lovable.app-1784732754732.png" },
@@ -142,7 +142,7 @@ function RootComponent() {
             <header className="sticky top-0 z-20 flex h-14 items-center gap-2 border-b border-border/60 bg-background/80 px-3 backdrop-blur-md">
               <SidebarTrigger className="text-muted-foreground hover:text-foreground" />
               <div className="ml-1 text-sm text-muted-foreground">
-                <span className="font-display font-medium text-foreground">Atlas</span>
+                <span className="font-display font-medium text-foreground">Eleva</span>
                 <span className="mx-2">/</span>
                 <span>Personal OS</span>
               </div>

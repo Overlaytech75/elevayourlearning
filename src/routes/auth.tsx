@@ -15,10 +15,10 @@ import { useAuth } from "@/lib/auth";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign in · Atlas Student OS" },
-      { name: "description", content: "Sign in to Atlas to sync your courses, deadlines, notes and study streaks across devices." },
-      { property: "og:title", content: "Sign in · Atlas Student OS" },
-      { property: "og:description", content: "Sign in to Atlas to sync your courses, deadlines, notes and study streaks across devices." },
+      { title: "Sign in · Eleva Student OS" },
+      { name: "description", content: "Sign in to Eleva to sync your courses, deadlines, notes and study streaks across devices." },
+      { property: "og:title", content: "Sign in · Eleva Student OS" },
+      { property: "og:description", content: "Sign in to Eleva to sync your courses, deadlines, notes and study streaks across devices." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -79,7 +79,7 @@ function AuthPage() {
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
           <GraduationCap className="h-6 w-6" />
         </div>
-        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight">Atlas</h1>
+        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight">Eleva</h1>
         <p className="mt-1 text-sm text-muted-foreground">Your student operating system.</p>
       </div>
 

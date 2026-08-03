@@ -51,7 +51,7 @@ export const runStudyTool = createServerFn({ method: "POST" })
       const { text } = await generateText({
         model: gateway("google/gemini-3.6-flash"),
         system:
-          "You are Atlas, an expert academic tutor. Be accurate, concise and practical. When asked for JSON, output raw JSON only.",
+          "You are Eleva, an expert academic tutor. Be accurate, concise and practical. When asked for JSON, output raw JSON only.",
         prompt: PROMPTS[data.tool](data),
       });
       return { result: text.trim() };

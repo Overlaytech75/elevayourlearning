@@ -121,7 +121,7 @@ function seed(): LifeState {
       { id: uid(), name: "STEM Futures Grant", provider: "Industry body", amount: 3000, deadline: iso(48), status: "applied" },
     ],
     jobs: [
-      { id: uid(), role: "Software Engineering Intern", company: "Atlassian", type: "internship", appliedOn: iso(-10), status: "applied" },
+      { id: uid(), role: "Software Engineering Intern", company: "Elevasian", type: "internship", appliedOn: iso(-10), status: "applied" },
       { id: uid(), role: "Graduate Data Analyst", company: "Telstra", type: "graduate", appliedOn: iso(-3), status: "saved" },
     ],
     career: [

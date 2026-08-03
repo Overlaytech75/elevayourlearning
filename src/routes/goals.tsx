@@ -28,9 +28,9 @@ import { useAppState, actions, daysUntil, type Goal } from "@/lib/store";
 export const Route = createFileRoute("/goals")({
   head: () => ({
     meta: [
-      { title: "Goals · Atlas" },
+      { title: "Goals · Eleva" },
       { name: "description", content: "Set direction with meaningful goals and milestones." },
-      { property: "og:title", content: "Goals · Atlas" },
+      { property: "og:title", content: "Goals · Eleva" },
       { property: "og:description", content: "North stars and next milestones." },
     ],
   }),

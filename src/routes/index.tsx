@@ -23,9 +23,9 @@ import { useAuth, displayNameOf } from "@/lib/auth";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Today · Atlas" },
+      { title: "Today · Eleva" },
       { name: "description", content: "Your calm command center: today's classes, deadlines, and what to focus on next." },
-      { property: "og:title", content: "Today · Atlas" },
+      { property: "og:title", content: "Today · Eleva" },
       { property: "og:description", content: "Your calm command center: today's classes, deadlines, and what to focus on next." },
     ],
   }),

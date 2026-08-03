@@ -42,9 +42,9 @@ import { runStudyTool } from "@/lib/study.functions";
 export const Route = createFileRoute("/study")({
   head: () => ({
     meta: [
-      { title: "Study tools · Atlas" },
+      { title: "Study tools · Eleva" },
       { name: "description", content: "Pomodoro focus timer, GPA calculator, AI flashcard generator and quiz mode — all in one study workspace." },
-      { property: "og:title", content: "Study tools · Atlas" },
+      { property: "og:title", content: "Study tools · Eleva" },
       { property: "og:description", content: "Pomodoro focus timer, GPA calculator, AI flashcards and quiz mode in one workspace." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -58,7 +58,7 @@ function StudyPage() {
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <header className="mb-6">
         <h1 className="font-display text-3xl font-semibold tracking-tight">Study tools</h1>
-        <p className="mt-1 text-muted-foreground">Focus, measure, and drill — without leaving Atlas.</p>
+        <p className="mt-1 text-muted-foreground">Focus, measure, and drill — without leaving Eleva.</p>
       </header>
 
       <Tabs defaultValue="timer">

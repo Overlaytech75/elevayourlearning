@@ -14,9 +14,9 @@ import { studyActions, useStudyState } from "@/lib/study-store";
 export const Route = createFileRoute("/notes")({
   head: () => ({
     meta: [
-      { title: "Notes · Atlas" },
+      { title: "Notes · Eleva" },
       { name: "description", content: "Markdown note-taking for lectures and revision, with live preview and autosave." },
-      { property: "og:title", content: "Notes · Atlas" },
+      { property: "og:title", content: "Notes · Eleva" },
       { property: "og:description", content: "Markdown note-taking for lectures and revision, with live preview and autosave." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

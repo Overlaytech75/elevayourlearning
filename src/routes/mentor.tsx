@@ -17,10 +17,10 @@ export const Route = createFileRoute("/mentor")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "AI Mentor · Atlas" },
+      { title: "AI Mentor · Eleva" },
       { name: "description", content: "A calm, context-aware study coach that knows your semester." },
-      { property: "og:title", content: "AI Mentor · Atlas" },
-      { property: "og:description", content: "Ask, plan, reflect — your Atlas mentor." },
+      { property: "og:title", content: "AI Mentor · Eleva" },
+      { property: "og:description", content: "Ask, plan, reflect — your Eleva mentor." },
     ],
   }),
   component: MentorPage,
@@ -144,7 +144,7 @@ function MentorPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q]);
 
-  const heading = useMemo(() => `Hi ${user.name}, I'm your Atlas mentor.`, [user.name]);
+  const heading = useMemo(() => `Hi ${user.name}, I'm your Eleva mentor.`, [user.name]);
 
   return (
     <div className="mx-auto flex h-[calc(100vh-3.5rem)] max-w-5xl flex-col px-4 py-6 sm:px-6 lg:px-8">
@@ -220,7 +220,7 @@ function MentorPage() {
               </Button>
             </form>
             <p className="mt-2 text-[11px] text-muted-foreground">
-              Uses your live Atlas data plus general knowledge. Powered by Lovable AI (Gemini 3.6 Flash).
+              Uses your live Eleva data plus general knowledge. Powered by Lovable AI (Gemini 3.6 Flash).
             </p>
           </div>
         </CardContent>
