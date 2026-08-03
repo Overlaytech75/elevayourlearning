@@ -261,20 +261,27 @@ const EMPTY_STATE: AppState = {
 };
 
 export function useAppState<T>(selector: (s: AppState) => T): T {
-  const [value, setValue] = useState<T>(() => selector(EMPTY_STATE));
+  const [snap, setSnap] = useState<{ v: number; value: T }>(() => ({
+    v: 0,
+    value: selector(EMPTY_STATE),
+  }));
+  const selectorRef = useRef(selector);
+  selectorRef.current = selector;
 
   useEffect(() => {
-    setValue(selector(ensure()));
-    const l = () => setValue(selector(ensure()));
-    listeners.add(l);
+    // Always produce a new wrapper object so React re-renders even when the
+    // selected value is the same (mutated) array/object reference.
+    const update = () => setSnap((prev) => ({ v: prev.v + 1, value: selectorRef.current(ensure()) }));
+    update();
+    listeners.add(update);
     return () => {
-      listeners.delete(l);
+      listeners.delete(update);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return value;
+  return snap.value;
 }
+
 
 // --- actions ---
 
