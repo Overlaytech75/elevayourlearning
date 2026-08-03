@@ -142,10 +142,18 @@ function AuthPage() {
 
       <p className="mt-4 text-center text-xs text-muted-foreground">
         Prefer to look around first?{" "}
-        <Link to="/" className="text-primary underline-offset-4 hover:underline">
-          Continue without an account
-        </Link>
+        <button
+          type="button"
+          onClick={() => {
+            startPreview();
+            navigate({ to: "/" });
+          }}
+          className="text-primary underline-offset-4 hover:underline"
+        >
+          Take a 5-minute tour
+        </button>
       </p>
+
     </div>
   );
 }
