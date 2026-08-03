@@ -31,25 +31,38 @@ export const Route = createFileRoute("/")({
   component: Dashboard,
 });
 
-function greetingFor(hour = new Date().getHours()) {
+function greetingFor(hour: number) {
   if (hour < 12) return "Good morning";
   if (hour < 18) return "Good afternoon";
   return "Good evening";
 }
 
+function firstNameOf(name: string) {
+  return name.trim().split(/\s+/)[0] || name;
+}
+
 function Dashboard() {
-  const user = useAppState((s) => s.user);
+  const { user: authUser } = useAuth();
   const courses = useAppState((s) => s.courses);
   const assessments = useAppState((s) => s.assessments);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState<Assessment | null>(null);
 
-  const now = useMemo(() => new Date(), []);
-  const today = now.toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  });
+  // Live clock so the greeting and date stay correct while the tab is open.
+  // Starts null on the server + first client render to avoid hydration mismatch.
+  const [now, setNow] = useState<Date | null>(null);
+  useEffect(() => {
+    setNow(new Date());
+    const t = setInterval(() => setNow(new Date()), 30_000);
+    return () => clearInterval(t);
+  }, []);
+
+  const displayName = authUser ? firstNameOf(displayNameOf(authUser, "there")) : "there";
+  const greeting = now ? greetingFor(now.getHours()) : "Hello";
+  const today = now
+    ? now.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })
+    : "";
+
 
 
   const upcoming = useMemo(
