@@ -182,18 +182,20 @@ function persist() {
 }
 
 export function useLifeState<T>(selector: (s: LifeState) => T): T {
-  const [value, setValue] = useState<T>(() => selector(EMPTY));
+  const [snap, setSnap] = useState<{ v: number; value: T }>(() => ({ v: 0, value: selector(EMPTY) }));
+  const selectorRef = useRef(selector);
+  selectorRef.current = selector;
   useEffect(() => {
-    setValue(selector(ensure()));
-    const l = () => setValue(selector(ensure()));
-    listeners.add(l);
+    const update = () => setSnap((prev) => ({ v: prev.v + 1, value: selectorRef.current(ensure()) }));
+    update();
+    listeners.add(update);
     return () => {
-      listeners.delete(l);
+      listeners.delete(update);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return value;
+  return snap.value;
 }
+
 
 export function daysLeft(isoDate: string): number {
   if (!isoDate) return 0;
