@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   BookOpen,
@@ -18,38 +18,52 @@ import { Badge } from "@/components/ui/badge";
 import { AssessmentRow } from "@/components/assessment-row";
 import { AssessmentDialog } from "@/components/assessment-dialog";
 import { useAppState, daysUntil, type Assessment } from "@/lib/store";
+import { useAuth, displayNameOf } from "@/lib/auth";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Today · Atlas" },
+      { title: "Today · Eleva" },
       { name: "description", content: "Your calm command center: today's classes, deadlines, and what to focus on next." },
-      { property: "og:title", content: "Today · Atlas" },
+      { property: "og:title", content: "Today · Eleva" },
       { property: "og:description", content: "Your calm command center: today's classes, deadlines, and what to focus on next." },
     ],
   }),
   component: Dashboard,
 });
 
-function greetingFor(hour = new Date().getHours()) {
+function greetingFor(hour: number) {
   if (hour < 12) return "Good morning";
   if (hour < 18) return "Good afternoon";
   return "Good evening";
 }
 
+function firstNameOf(name: string) {
+  return name.trim().split(/\s+/)[0] || name;
+}
+
 function Dashboard() {
-  const user = useAppState((s) => s.user);
+  const { user: authUser } = useAuth();
   const courses = useAppState((s) => s.courses);
   const assessments = useAppState((s) => s.assessments);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState<Assessment | null>(null);
 
-  const now = useMemo(() => new Date(), []);
-  const today = now.toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  });
+  // Live clock so the greeting and date stay correct while the tab is open.
+  // Starts null on the server + first client render to avoid hydration mismatch.
+  const [now, setNow] = useState<Date | null>(null);
+  useEffect(() => {
+    setNow(new Date());
+    const t = setInterval(() => setNow(new Date()), 30_000);
+    return () => clearInterval(t);
+  }, []);
+
+  const displayName = authUser ? firstNameOf(displayNameOf(authUser, "there")) : "there";
+  const greeting = now ? greetingFor(now.getHours()) : "Hello";
+  const today = now
+    ? now.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })
+    : "";
+
 
 
   const upcoming = useMemo(
@@ -159,13 +173,14 @@ function Dashboard() {
                 {today}
               </span>
               <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-                {greetingFor()},{" "}
+                {greeting},{" "}
                 <span
                   className="bg-gradient-to-r from-primary via-chart-4 to-chart-3 bg-clip-text text-transparent"
                   style={{ backgroundSize: "200% 100%" }}
                 >
-                  {user.name}
+                  {displayName}
                 </span>
+
                 .
               </h1>
               <p className="mt-3 max-w-xl text-muted-foreground">

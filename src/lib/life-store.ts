@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export interface VisaInfo {
   country: string;
@@ -121,7 +121,7 @@ function seed(): LifeState {
       { id: uid(), name: "STEM Futures Grant", provider: "Industry body", amount: 3000, deadline: iso(48), status: "applied" },
     ],
     jobs: [
-      { id: uid(), role: "Software Engineering Intern", company: "Atlassian", type: "internship", appliedOn: iso(-10), status: "applied" },
+      { id: uid(), role: "Software Engineering Intern", company: "Elevasian", type: "internship", appliedOn: iso(-10), status: "applied" },
       { id: uid(), role: "Graduate Data Analyst", company: "Telstra", type: "graduate", appliedOn: iso(-3), status: "saved" },
     ],
     career: [
@@ -182,18 +182,20 @@ function persist() {
 }
 
 export function useLifeState<T>(selector: (s: LifeState) => T): T {
-  const [value, setValue] = useState<T>(() => selector(EMPTY));
+  const [snap, setSnap] = useState<{ v: number; value: T }>(() => ({ v: 0, value: selector(EMPTY) }));
+  const selectorRef = useRef(selector);
+  selectorRef.current = selector;
   useEffect(() => {
-    setValue(selector(ensure()));
-    const l = () => setValue(selector(ensure()));
-    listeners.add(l);
+    const update = () => setSnap((prev) => ({ v: prev.v + 1, value: selectorRef.current(ensure()) }));
+    update();
+    listeners.add(update);
     return () => {
-      listeners.delete(l);
+      listeners.delete(update);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return value;
+  return snap.value;
 }
+
 
 export function daysLeft(isoDate: string): number {
   if (!isoDate) return 0;

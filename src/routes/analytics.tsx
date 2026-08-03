@@ -9,7 +9,7 @@ import { useAppState } from "@/lib/store";
 export const Route = createFileRoute("/analytics")({
   head: () => ({
     meta: [
-      { title: "Analytics · Atlas" },
+      { title: "Analytics · Eleva" },
       { name: "description", content: "Insights into study time, spending, and momentum." },
       { property: "og:title", content: "Analytics · Analytics" },
       { property: "og:description", content: "See where your energy actually goes." },

@@ -8,9 +8,9 @@ import { useAppState, daysUntil, type Assessment } from "@/lib/store";
 export const Route = createFileRoute("/timeline")({
   head: () => ({
     meta: [
-      { title: "Timeline · Atlas" },
+      { title: "Timeline · Eleva" },
       { name: "description", content: "See every deadline across today, this week, this month and the rest of the semester." },
-      { property: "og:title", content: "Timeline · Atlas" },
+      { property: "og:title", content: "Timeline · Eleva" },
       { property: "og:description", content: "Deadlines at a glance." },
     ],
   }),

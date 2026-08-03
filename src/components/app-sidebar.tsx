@@ -61,7 +61,7 @@ const secondary = [
 export function AppSidebar() {
   const { mode, setMode } = useTheme();
   const { user } = useAuth();
-  const name = displayNameOf(user, "Sakif");
+  const name = displayNameOf(user, "Guest");
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { isMobile, setOpenMobile } = useSidebar();
   const isActive = (p: string) => (p === "/" ? pathname === "/" : pathname.startsWith(p));
@@ -77,7 +77,7 @@ export function AppSidebar() {
             <Sparkles className="h-4 w-4" />
           </div>
           <div className="grid text-left leading-tight group-data-[collapsible=icon]:hidden">
-            <span className="font-display text-sm font-semibold tracking-tight">Atlas</span>
+            <span className="font-display text-sm font-semibold tracking-tight">Eleva</span>
             <span className="text-[11px] text-muted-foreground">Personal OS</span>
           </div>
         </div>

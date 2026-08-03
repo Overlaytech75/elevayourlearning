@@ -20,9 +20,9 @@ import { useAppState, actions, type Priority } from "@/lib/store";
 export const Route = createFileRoute("/productivity")({
   head: () => ({
     meta: [
-      { title: "Productivity · Atlas" },
+      { title: "Productivity · Eleva" },
       { name: "description", content: "Tasks, habits, and focus in one calm workspace." },
-      { property: "og:title", content: "Productivity · Atlas" },
+      { property: "og:title", content: "Productivity · Eleva" },
       { property: "og:description", content: "Ship tasks and build habits, gently." },
     ],
   }),

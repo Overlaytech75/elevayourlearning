@@ -28,9 +28,9 @@ import { useAppState, actions } from "@/lib/store";
 export const Route = createFileRoute("/finance")({
   head: () => ({
     meta: [
-      { title: "Finance · Atlas" },
+      { title: "Finance · Eleva" },
       { name: "description", content: "Track spending, budgets, and cash flow as a student." },
-      { property: "og:title", content: "Finance · Atlas" },
+      { property: "og:title", content: "Finance · Eleva" },
       { property: "og:description", content: "Budget, spend, and save with clarity." },
     ],
   }),

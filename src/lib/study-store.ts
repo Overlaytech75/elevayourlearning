@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export interface Note {
   id: string;
@@ -129,18 +129,20 @@ function persist() {
 }
 
 export function useStudyState<T>(selector: (s: StudyState) => T): T {
-  const [value, setValue] = useState<T>(() => selector(EMPTY));
+  const [snap, setSnap] = useState<{ v: number; value: T }>(() => ({ v: 0, value: selector(EMPTY) }));
+  const selectorRef = useRef(selector);
+  selectorRef.current = selector;
   useEffect(() => {
-    setValue(selector(ensure()));
-    const l = () => setValue(selector(ensure()));
-    listeners.add(l);
+    const update = () => setSnap((prev) => ({ v: prev.v + 1, value: selectorRef.current(ensure()) }));
+    update();
+    listeners.add(update);
     return () => {
-      listeners.delete(l);
+      listeners.delete(update);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return value;
+  return snap.value;
 }
+
 
 export const GRADE_POINTS: Record<string, number> = {
   "A+": 4, A: 4, "A-": 3.7, "B+": 3.3, B: 3, "B-": 2.7,

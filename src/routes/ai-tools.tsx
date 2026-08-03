@@ -31,9 +31,9 @@ import { studyActions } from "@/lib/study-store";
 export const Route = createFileRoute("/ai-tools")({
   head: () => ({
     meta: [
-      { title: "AI study tools · Atlas" },
+      { title: "AI study tools · Eleva" },
       { name: "description", content: "Summarize notes, generate practice exams, explain hard concepts, build citations and get essay feedback with AI." },
-      { property: "og:title", content: "AI study tools · Atlas" },
+      { property: "og:title", content: "AI study tools · Eleva" },
       { property: "og:description", content: "Summaries, practice exams, concept explainers, citations and essay feedback — powered by AI." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
