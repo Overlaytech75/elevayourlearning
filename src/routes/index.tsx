@@ -173,13 +173,14 @@ function Dashboard() {
                 {today}
               </span>
               <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-                {greetingFor()},{" "}
+                {greeting},{" "}
                 <span
                   className="bg-gradient-to-r from-primary via-chart-4 to-chart-3 bg-clip-text text-transparent"
                   style={{ backgroundSize: "200% 100%" }}
                 >
-                  {user.name}
+                  {displayName}
                 </span>
+
                 .
               </h1>
               <p className="mt-3 max-w-xl text-muted-foreground">
