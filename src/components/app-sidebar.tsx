@@ -61,7 +61,7 @@ const secondary = [
 export function AppSidebar() {
   const { mode, setMode } = useTheme();
   const { user } = useAuth();
-  const name = displayNameOf(user, "Sakif");
+  const name = displayNameOf(user, "Guest");
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { isMobile, setOpenMobile } = useSidebar();
   const isActive = (p: string) => (p === "/" ? pathname === "/" : pathname.startsWith(p));
