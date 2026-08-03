@@ -148,8 +148,11 @@ function RootComponent() {
               </div>
             </header>
             <main className="flex-1">
-              <Outlet />
+              <PreviewGate>
+                <Outlet />
+              </PreviewGate>
             </main>
+
           </div>
         </div>
         <Toaster />
