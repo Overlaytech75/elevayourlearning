@@ -28,12 +28,20 @@ function Academics() {
   const courses = useAppState((s) => s.courses);
   const assessments = useAppState((s) => s.assessments);
 
-  const [semesterId, setSemesterId] = useState<string>(semesters[0]?.id ?? "");
+  const [semesterId, setSemesterId] = useState<string>("");
   const [q, setQ] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [courseDialogOpen, setCourseDialogOpen] = useState(false);
   const [editing, setEditing] = useState<Assessment | null>(null);
   const [defaultCourseId, setDefaultCourseId] = useState<string | undefined>();
+
+  // Semesters only exist after hydration, so pick the default once they arrive.
+  useEffect(() => {
+    if (semesters.length && !semesters.some((s) => s.id === semesterId)) {
+      setSemesterId(semesters[0].id);
+    }
+  }, [semesters, semesterId]);
+
 
   const semesterCourses = useMemo(
     () => courses.filter((c) => (semesterId ? c.semesterId === semesterId : true)),
