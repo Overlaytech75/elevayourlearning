@@ -30,3 +30,7 @@ Replace the hardcoded "Sakif" with the signed-in user's first name — taken fro
 - Preview gate: a small client-only provider that records the preview start timestamp in `sessionStorage`; the root layout renders the gate overlay when it expires. Route protection stays client-side so shareable links and SEO metadata still work.
 - Greeting: `useEffect` interval (60s) updating a state clock; guarded to avoid hydration mismatch.
 - Name: derived from `useAuth()` + `displayNameOf()`; store's `user.name` stops being the source of truth on the dashboard.
+
+## 5. Rename the system to Eleva
+
+Replace every remaining "Atlas" with "Eleva" across the app: sidebar branding, header breadcrumb, sign-in page, page titles and share/preview descriptions on all routes, and the AI mentor's own self-description in its prompt. Stored data keys stay as-is so existing saved data isn't lost.
