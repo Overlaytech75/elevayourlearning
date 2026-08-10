@@ -106,7 +106,10 @@
 }
 
 .dark {
+  --surface: oklch(0.22 0.025 260);
+  --gradient-brand: linear-gradient(160deg, oklch(0.20 0.03 262) 0%, oklch(0.16 0.02 260) 55%, oklch(0.22 0.05 258) 100%);
   --background: oklch(0.16 0.02 260);
+
   --foreground: oklch(0.97 0.003 250);
   --card: oklch(0.20 0.025 260);
   --card-foreground: oklch(0.97 0.003 250);
