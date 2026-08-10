@@ -216,26 +216,90 @@ export function fortnightHours(shifts: WorkShift[]): number {
     .reduce((sum, s) => sum + s.hours, 0);
 }
 
-export const COUNTRY_RESOURCES: Record<string, { label: string; note: string }[]> = {
+export const COUNTRY_RESOURCES: Record<
+  string,
+  { label: string; note: string; url: string }[]
+> = {
   Australia: [
-    { label: "Home Affairs — visa conditions (VEVO)", note: "Check work rights and conditions attached to subclass 500." },
-    { label: "ATO — Tax file number & returns", note: "Lodge between 1 July and 31 October each year." },
-    { label: "Fair Work Ombudsman", note: "Minimum wage, payslips, and unpaid-work rules for students." },
-    { label: "Study Australia", note: "Official support, accommodation, and wellbeing services." },
+    {
+      label: "Home Affairs — check visa conditions (VEVO)",
+      note: "Confirm work rights and conditions attached to subclass 500.",
+      url: "https://immi.homeaffairs.gov.au/visas/already-have-a-visa/check-visa-details-and-conditions",
+    },
+    {
+      label: "ATO — Tax file number & returns",
+      note: "Apply for a TFN and lodge between 1 July and 31 October.",
+      url: "https://www.ato.gov.au/individuals-and-families/tax-file-number",
+    },
+    {
+      label: "Fair Work Ombudsman",
+      note: "Minimum wage, payslips and unpaid-work rules for students.",
+      url: "https://www.fairwork.gov.au/find-help-for/visa-holders-and-migrants",
+    },
+    {
+      label: "Study Australia",
+      note: "Official support, accommodation and wellbeing services.",
+      url: "https://www.studyaustralia.gov.au/",
+    },
+    {
+      label: "OSHC — health cover explained",
+      note: "What Overseas Student Health Cover must include and how to claim.",
+      url: "https://www.privatehealth.gov.au/health_insurance/overseas/overseas_student_health_cover.htm",
+    },
   ],
   Canada: [
-    { label: "IRCC — study permit conditions", note: "Off-campus work hours and co-op work permits." },
-    { label: "CRA — international student taxes", note: "File a return even with low income to claim credits." },
+    {
+      label: "IRCC — study permit conditions",
+      note: "Off-campus work hours and co-op work permits.",
+      url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work.html",
+    },
+    {
+      label: "CRA — international students and taxes",
+      note: "File a return even with low income to claim credits.",
+      url: "https://www.canada.ca/en/revenue-agency/services/tax/international-non-residents/individuals-leaving-entering-canada-non-residents/international-students-studying-canada.html",
+    },
+    {
+      label: "Social Insurance Number (SIN)",
+      note: "Required before you can legally be paid for work.",
+      url: "https://www.canada.ca/en/employment-social-development/services/sin.html",
+    },
   ],
   "United Kingdom": [
-    { label: "UKVI — Student route", note: "Term-time work limits and BRP validity." },
-    { label: "HMRC — student tax", note: "Personal allowance and reclaiming overpaid tax." },
+    {
+      label: "UKVI — Student visa route",
+      note: "Term-time work limits, eVisa/BRP validity and extensions.",
+      url: "https://www.gov.uk/student-visa",
+    },
+    {
+      label: "HMRC — student tax",
+      note: "Personal allowance and reclaiming overpaid tax.",
+      url: "https://www.gov.uk/student-jobs-paying-tax",
+    },
+    {
+      label: "National Insurance number",
+      note: "Apply once you have the right to work in the UK.",
+      url: "https://www.gov.uk/apply-national-insurance-number",
+    },
   ],
   "United States": [
-    { label: "SEVP — F-1 status", note: "On-campus work, CPT and OPT eligibility." },
-    { label: "IRS — Form 8843", note: "Required each year, even with no income." },
+    {
+      label: "Study in the States — F-1 status",
+      note: "On-campus work, CPT and OPT eligibility.",
+      url: "https://studyinthestates.dhs.gov/students",
+    },
+    {
+      label: "IRS — Form 8843",
+      note: "Required each year, even with no income.",
+      url: "https://www.irs.gov/forms-pubs/about-form-8843",
+    },
+    {
+      label: "SSA — Social Security number for students",
+      note: "Needed for on-campus and authorised employment.",
+      url: "https://www.ssa.gov/people/immigrants/",
+    },
   ],
 };
+
 
 export const lifeActions = {
   updateVisa(patch: Partial<VisaInfo>) {

@@ -10,6 +10,8 @@ import {
   Globe2,
   Plus,
   Trash2,
+  ExternalLink,
+
 } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -64,10 +66,17 @@ function Countdown({
   date: string;
 }) {
   const d = daysLeft(date);
-  const tone =
-    d < 0 ? "text-destructive" : d < 60 ? "text-chart-4" : "text-foreground";
+  const tone = d < 0 ? "text-destructive" : d < 60 ? "text-warning" : "text-foreground";
+  const edge = !date
+    ? "border-l-border"
+    : d < 0
+      ? "border-l-destructive"
+      : d < 60
+        ? "border-l-warning"
+        : "border-l-primary";
   return (
-    <Card className="transition-all duration-200 hover:shadow-[var(--shadow-soft)]">
+    <Card className={`border-l-4 ${edge} transition-all duration-200 hover:shadow-[var(--shadow-soft)]`}>
+
       <CardContent className="p-4">
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <Icon className="h-3.5 w-3.5" />
@@ -194,14 +203,25 @@ function InternationalHub() {
           <Card>
             <CardContent className="p-5">
               <h2 className="font-display text-sm font-semibold">Resources for {visa.country || "Australia"}</h2>
-              <ul className="mt-3 space-y-3">
+              <ul className="mt-3 space-y-2">
                 {resources.map((r) => (
-                  <li key={r.label} className="rounded-lg border border-border/60 p-3">
-                    <div className="text-sm font-medium">{r.label}</div>
-                    <div className="text-xs text-muted-foreground">{r.note}</div>
+                  <li key={r.label}>
+                    <a
+                      href={r.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-start gap-3 rounded-lg border border-border/60 p-3 transition-all duration-200 hover:border-primary/40 hover:bg-accent/60 hover:shadow-[var(--shadow-soft)]"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-medium group-hover:text-primary">{r.label}</div>
+                        <div className="text-xs text-muted-foreground">{r.note}</div>
+                      </div>
+                      <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+                    </a>
                   </li>
                 ))}
               </ul>
+
             </CardContent>
           </Card>
         </TabsContent>
