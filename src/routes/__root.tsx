@@ -131,8 +131,38 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+const SECTION_LABELS: { prefix: string; label: string }[] = [
+  { prefix: "/academics", label: "Academics" },
+  { prefix: "/timeline", label: "Timeline" },
+  { prefix: "/study", label: "Study" },
+  { prefix: "/notes", label: "Notes" },
+  { prefix: "/ai-tools", label: "AI Tools" },
+  { prefix: "/mentor", label: "AI Mentor" },
+  { prefix: "/productivity", label: "Productivity" },
+  { prefix: "/finance", label: "Finance" },
+  { prefix: "/goals", label: "Goals" },
+  { prefix: "/analytics", label: "Analytics" },
+  { prefix: "/international", label: "International" },
+  { prefix: "/career", label: "Career" },
+];
+
+function sectionLabel(pathname: string) {
+  return SECTION_LABELS.find((s) => pathname.startsWith(s.prefix))?.label ?? "Today";
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const bare = pathname.startsWith("/auth");
+
+  if (bare) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <Outlet />
+        <Toaster />
+      </QueryClientProvider>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -141,11 +171,11 @@ function RootComponent() {
           <AppSidebar />
           <div className="flex min-w-0 flex-1 flex-col">
             <header className="sticky top-0 z-20 flex h-14 items-center gap-2 border-b border-border/60 bg-background/80 px-3 backdrop-blur-md">
-              <SidebarTrigger className="text-muted-foreground hover:text-foreground" />
-              <div className="ml-1 text-sm text-muted-foreground">
+              <SidebarTrigger className="text-muted-foreground transition-colors duration-200 hover:text-foreground" />
+              <div className="ml-1 min-w-0 truncate text-sm text-muted-foreground">
                 <span className="font-display font-medium text-foreground">Eleva</span>
                 <span className="mx-2">/</span>
-                <span>Personal OS</span>
+                <span>{sectionLabel(pathname)}</span>
               </div>
             </header>
             <main className="flex-1">
@@ -161,3 +191,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
