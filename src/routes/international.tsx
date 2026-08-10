@@ -66,10 +66,17 @@ function Countdown({
   date: string;
 }) {
   const d = daysLeft(date);
-  const tone =
-    d < 0 ? "text-destructive" : d < 60 ? "text-chart-4" : "text-foreground";
+  const tone = d < 0 ? "text-destructive" : d < 60 ? "text-warning" : "text-foreground";
+  const edge = !date
+    ? "border-l-border"
+    : d < 0
+      ? "border-l-destructive"
+      : d < 60
+        ? "border-l-warning"
+        : "border-l-primary";
   return (
-    <Card className="transition-all duration-200 hover:shadow-[var(--shadow-soft)]">
+    <Card className={`border-l-4 ${edge} transition-all duration-200 hover:shadow-[var(--shadow-soft)]`}>
+
       <CardContent className="p-4">
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <Icon className="h-3.5 w-3.5" />
