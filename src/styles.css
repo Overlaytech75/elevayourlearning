@@ -63,7 +63,10 @@
 
 :root {
   --radius: 0.75rem;
+  --surface: oklch(0.985 0.004 250);
+  --gradient-brand: linear-gradient(160deg, oklch(0.975 0.012 250) 0%, oklch(0.995 0.002 250) 55%, oklch(0.97 0.02 258) 100%);
   /* Cloud White palette */
+
   --background: oklch(0.995 0.002 250);
   --foreground: oklch(0.18 0.03 260);
   --card: oklch(1 0 0);
