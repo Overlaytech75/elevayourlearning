@@ -288,8 +288,13 @@ function Flashcards() {
       setSource("");
       setDeckName("");
       toast.success(`Created ${cards.length} cards — +20 XP`);
-    } catch {
-      toast.error("Couldn't build cards from that. Try shorter, cleaner notes.");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      toast.error(
+        /unauthor|401/i.test(msg)
+          ? "Sign in to generate flashcards with AI."
+          : "Couldn't build cards from that. Try shorter, cleaner notes.",
+      );
     } finally {
       setBusy(false);
     }
