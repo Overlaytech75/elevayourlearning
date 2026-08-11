@@ -169,11 +169,12 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SidebarProvider>
-        <div className="flex min-h-screen w-full bg-background">
+        <div className="flex min-h-screen w-full bg-transparent">
           <AppSidebar />
           <div className="flex min-w-0 flex-1 flex-col">
-            <header className="sticky top-0 z-20 flex h-14 items-center gap-2 border-b border-border/60 bg-background/80 px-3 backdrop-blur-md">
+            <header className="sticky top-0 z-20 flex h-14 items-center gap-2 border-b border-border/60 bg-card/40 px-3 backdrop-blur-xl">
               <SidebarTrigger className="text-muted-foreground transition-colors duration-200 hover:text-foreground" />
+
               <div className="ml-1 min-w-0 truncate text-sm text-muted-foreground">
                 <span className="font-display font-medium text-foreground">Eleva</span>
                 <span className="mx-2">/</span>

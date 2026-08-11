@@ -7,20 +7,21 @@ const MODE_KEY = "atlas:theme-mode";
 const ACCENT_KEY = "atlas:accent";
 
 export const ACCENTS: { id: Accent; label: string; swatch: string }[] = [
-  { id: "blue", label: "Electric", swatch: "oklch(0.60 0.19 258)" },
-  { id: "violet", label: "Violet", swatch: "oklch(0.60 0.20 300)" },
-  { id: "emerald", label: "Emerald", swatch: "oklch(0.65 0.15 160)" },
-  { id: "amber", label: "Amber", swatch: "oklch(0.75 0.15 70)" },
-  { id: "rose", label: "Rose", swatch: "oklch(0.64 0.20 15)" },
+  { id: "blue", label: "Alpine", swatch: "oklch(0.56 0.13 235)" },
+  { id: "violet", label: "Dusk", swatch: "oklch(0.56 0.13 265)" },
+  { id: "emerald", label: "Lagoon", swatch: "oklch(0.62 0.12 190)" },
+  { id: "amber", label: "Sunrise", swatch: "oklch(0.72 0.13 78)" },
+  { id: "rose", label: "Alpenglow", swatch: "oklch(0.62 0.16 20)" },
 ];
 
 const ACCENT_VALUES: Record<Accent, string> = {
-  blue: "oklch(0.60 0.19 258)",
-  violet: "oklch(0.60 0.20 300)",
-  emerald: "oklch(0.62 0.14 160)",
-  amber: "oklch(0.72 0.15 70)",
-  rose: "oklch(0.62 0.20 15)",
+  blue: "oklch(0.56 0.13 235)",
+  violet: "oklch(0.56 0.13 265)",
+  emerald: "oklch(0.60 0.11 190)",
+  amber: "oklch(0.70 0.13 78)",
+  rose: "oklch(0.60 0.16 20)",
 };
+
 
 function applyMode(mode: ThemeMode) {
   if (typeof document === "undefined") return;
