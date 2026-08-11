@@ -79,8 +79,13 @@ function AiToolsPage() {
       const { result } = await runStudyTool({ data: { tool, content, level, style, count } });
       setOutput(result);
       studyActions.awardXp(10);
-    } catch {
-      toast.error("That request failed. Try again in a moment.");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      toast.error(
+        /unauthor|401/i.test(msg)
+          ? "Sign in to use the AI study tools."
+          : "That request failed. Try again in a moment.",
+      );
     } finally {
       setBusy(false);
     }

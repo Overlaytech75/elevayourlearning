@@ -129,7 +129,13 @@ function MentorPage() {
       actions.addChatMessage({ role: "assistant", content: reply });
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      actions.addChatMessage({ role: "assistant", content: `Sorry — something broke: ${msg}` });
+      const unauthorized = /unauthor|401/i.test(msg);
+      actions.addChatMessage({
+        role: "assistant",
+        content: unauthorized
+          ? "You need to be signed in to use the AI mentor. Create a free account and I'll pick up right here."
+          : `Sorry — something broke: ${msg}`,
+      });
     } finally {
       setThinking(false);
     }
