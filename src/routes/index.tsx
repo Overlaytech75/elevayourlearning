@@ -273,8 +273,9 @@ function Dashboard() {
             className="relative overflow-hidden border-0 text-primary-foreground shadow-[var(--shadow-elevated)]"
             style={{
               background:
-                "linear-gradient(135deg, oklch(0.60 0.19 258), oklch(0.60 0.20 300) 55%, oklch(0.65 0.20 320))",
+                "linear-gradient(135deg, oklch(0.62 0.11 235), oklch(0.48 0.09 220) 55%, oklch(0.34 0.06 215))",
             }}
+
           >
             <div
               aria-hidden
