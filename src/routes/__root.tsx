@@ -17,6 +17,8 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from "@/components/ui/sonner";
 import { PreviewGate } from "@/components/preview-gate";
+import elevaMark from "@/assets/eleva-mark.png.asset.json";
+
 
 function NotFoundComponent() {
   return (
