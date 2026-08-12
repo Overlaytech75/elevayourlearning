@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { GraduationCap, Loader2, BookOpen, Wallet, Globe2 } from "lucide-react";
+import { Loader2, BookOpen, Wallet, Globe2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { useAuth } from "@/lib/auth";
 import { startPreview } from "@/components/preview-gate";
+import elevaMark from "@/assets/eleva-mark.png.asset.json";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -86,11 +87,10 @@ function AuthPage() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--primary)_28%,transparent),transparent_60%)]" />
         <div className="relative">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
-              <GraduationCap className="h-5 w-5" />
-            </div>
+            <img src={elevaMark.url} alt="Eleva logo" className="h-10 w-10 object-contain" />
             <span className="font-display text-xl font-semibold tracking-tight">Eleva</span>
           </div>
+
 
           <h1 className="mt-14 max-w-md font-display text-4xl font-semibold leading-tight tracking-tight">
             The calm operating system for student life.
@@ -124,9 +124,8 @@ function AuthPage() {
       <main className="flex items-center justify-center px-4 py-12 sm:px-8">
         <div className="w-full max-w-sm">
           <div className="mb-8 text-center lg:hidden">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
-              <GraduationCap className="h-6 w-6" />
-            </div>
+            <img src={elevaMark.url} alt="Eleva logo" className="mx-auto h-14 w-14 object-contain" />
+
             <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight">Eleva</h1>
             <p className="mt-1 text-sm text-muted-foreground">
               Your degree, money and paperwork in one calm place.

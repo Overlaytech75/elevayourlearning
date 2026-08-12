@@ -17,6 +17,8 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from "@/components/ui/sonner";
 import { PreviewGate } from "@/components/preview-gate";
+import elevaMark from "@/assets/eleva-mark.png.asset.json";
+
 
 function NotFoundComponent() {
   return (
@@ -105,6 +107,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -112,6 +115,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap",
       },
     ],
+
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -175,12 +179,15 @@ function RootComponent() {
             <header className="sticky top-0 z-20 flex h-14 items-center gap-2 border-b border-border/60 bg-card/40 px-3 backdrop-blur-xl">
               <SidebarTrigger className="text-muted-foreground transition-colors duration-200 hover:text-foreground" />
 
-              <div className="ml-1 min-w-0 truncate text-sm text-muted-foreground">
+              <div className="ml-1 flex min-w-0 items-center gap-2 truncate text-sm text-muted-foreground">
+
+                <img src={elevaMark.url} alt="Eleva logo" className="h-6 w-6 shrink-0 object-contain" />
                 <span className="font-display font-medium text-foreground">Eleva</span>
-                <span className="mx-2">/</span>
-                <span>{sectionLabel(pathname)}</span>
+                <span className="text-muted-foreground/60">/</span>
+                <span className="truncate">{sectionLabel(pathname)}</span>
               </div>
             </header>
+
             <main className="flex-1">
               <PreviewGate>
                 <Outlet />
