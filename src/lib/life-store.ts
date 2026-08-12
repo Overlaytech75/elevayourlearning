@@ -76,60 +76,8 @@ export interface LifeState {
   career: CareerAsset[];
 }
 
-const KEY = "eleva:life:v1";
+export const KEY = "eleva:life:v2";
 const uid = () => Math.random().toString(36).slice(2, 10);
-const iso = (offsetDays: number) => {
-  const d = new Date();
-  d.setDate(d.getDate() + offsetDays);
-  return d.toISOString().slice(0, 10);
-};
-
-function seed(): LifeState {
-  return {
-    visa: {
-      country: "Australia",
-      subclass: "500 — Student",
-      expiry: iso(420),
-      coeProvider: "University of Melbourne",
-      coeEnd: iso(400),
-      oshcProvider: "Medibank OSHC",
-      oshcExpiry: iso(180),
-      tfn: "Registered",
-      workLimitHoursPerFortnight: 48,
-    },
-    shifts: [
-      { id: uid(), date: iso(-2), hours: 6, employer: "Campus Cafe" },
-      { id: uid(), date: iso(-5), hours: 8, employer: "Campus Cafe" },
-      { id: uid(), date: iso(-9), hours: 7.5, employer: "Retail Co" },
-    ],
-    tuition: [
-      { id: uid(), label: "Semester 2 — instalment 1", amount: 8200, dueDate: iso(21), paid: false },
-      { id: uid(), label: "Semester 2 — instalment 2", amount: 8200, dueDate: iso(120), paid: false },
-      { id: uid(), label: "Semester 1 — final", amount: 7900, dueDate: iso(-95), paid: true },
-    ],
-    documents: [
-      { id: uid(), name: "Passport", category: "Identity", have: true, expiry: iso(900) },
-      { id: uid(), name: "Visa grant notice", category: "Visa", have: true, expiry: iso(420) },
-      { id: uid(), name: "Confirmation of Enrolment (CoE)", category: "Enrolment", have: true, expiry: iso(400) },
-      { id: uid(), name: "OSHC policy card", category: "Health", have: true, expiry: iso(180) },
-      { id: uid(), name: "Tax File Number letter", category: "Finance", have: false },
-      { id: uid(), name: "Bank statement (last 3 months)", category: "Finance", have: false },
-      { id: uid(), name: "Academic transcript", category: "Enrolment", have: true },
-    ],
-    scholarships: [
-      { id: uid(), name: "Global Excellence Award", provider: "University", amount: 5000, deadline: iso(25), status: "researching" },
-      { id: uid(), name: "STEM Futures Grant", provider: "Industry body", amount: 3000, deadline: iso(48), status: "applied" },
-    ],
-    jobs: [
-      { id: uid(), role: "Software Engineering Intern", company: "Elevasian", type: "internship", appliedOn: iso(-10), status: "applied" },
-      { id: uid(), role: "Graduate Data Analyst", company: "Telstra", type: "graduate", appliedOn: iso(-3), status: "saved" },
-    ],
-    career: [
-      { id: uid(), kind: "resume", title: "Master resume", detail: "1 page, tailored per role. Quantify every bullet.", updatedAt: new Date().toISOString() },
-      { id: uid(), kind: "linkedin", title: "LinkedIn headline", detail: "CS student · Building data tools · Seeking 2027 internships", updatedAt: new Date().toISOString() },
-    ],
-  };
-}
 
 const EMPTY: LifeState = {
   visa: {
@@ -150,6 +98,11 @@ const EMPTY: LifeState = {
   jobs: [],
   career: [],
 };
+
+function seed(): LifeState {
+  return JSON.parse(JSON.stringify(EMPTY)) as LifeState;
+}
+
 
 let state: LifeState | null = null;
 const listeners = new Set<() => void>();
