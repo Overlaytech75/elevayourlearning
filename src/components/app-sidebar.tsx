@@ -15,9 +15,10 @@ import {
   Globe2,
   Briefcase,
   Moon,
-
+  LogOut,
   Sun,
 } from "lucide-react";
+
 
 import {
   Sidebar,
@@ -33,7 +34,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useTheme } from "@/lib/theme";
-import { useAuth, displayNameOf } from "@/lib/auth";
+import { useAuth, displayNameOf, signOut } from "@/lib/auth";
+import { clearLocalData } from "@/lib/local-reset";
+
 
 const primary = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
@@ -68,6 +71,13 @@ export function AppSidebar() {
   const handleNav = () => {
     if (isMobile) setOpenMobile(false);
   };
+  const handleSignOut = async () => {
+    if (isMobile) setOpenMobile(false);
+    await signOut();
+    clearLocalData();
+    window.location.replace("/auth");
+  };
+
 
   return (
     <Sidebar collapsible="icon">
@@ -161,7 +171,18 @@ export function AppSidebar() {
             {mode === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
         </div>
+        {user ? (
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton tooltip="Sign out" onClick={handleSignOut}>
+                <LogOut />
+                <span>Sign out</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        ) : null}
       </SidebarFooter>
+
     </Sidebar>
   );
 }

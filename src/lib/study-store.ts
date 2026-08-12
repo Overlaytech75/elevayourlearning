@@ -44,7 +44,7 @@ export interface StudyState {
   game: Gamification;
 }
 
-const KEY = "atlas:study:v1";
+export const KEY = "eleva:study:v2";
 const uid = () => Math.random().toString(36).slice(2, 10);
 const todayKey = () => new Date().toISOString().slice(0, 10);
 
@@ -57,34 +57,13 @@ export const BADGES: { id: string; label: string; hint: string; at: number }[] =
 
 function seed(): StudyState {
   return {
-    notes: [
-      {
-        id: uid(),
-        title: "Databases — normalization",
-        body: "## 3NF checklist\n\n- No repeating groups\n- Every non-key column depends on **the key**\n- No transitive dependencies\n\n> Rule of thumb: the key, the whole key, and nothing but the key.",
-        tag: "COMP206",
-        updatedAt: new Date().toISOString(),
-      },
-    ],
-    decks: [
-      {
-        id: uid(),
-        name: "Networking basics",
-        createdAt: new Date().toISOString(),
-        cards: [
-          { id: uid(), front: "What does TCP guarantee?", back: "Ordered, reliable, error-checked delivery via acknowledgements and retransmission.", known: false },
-          { id: uid(), front: "Default subnet mask for /24", back: "255.255.255.0 — 254 usable hosts.", known: false },
-          { id: uid(), front: "UDP vs TCP in one line", back: "UDP is fire-and-forget and fast; TCP is connection-oriented and reliable.", known: false },
-        ],
-      },
-    ],
-    gpa: [
-      { id: uid(), name: "COMP101", credits: 6, grade: "A" },
-      { id: uid(), name: "COMP206", credits: 6, grade: "B+" },
-    ],
-    game: { xp: 120, pomodorosToday: 0, pomodoroDate: todayKey(), studyDays: [], badges: [] },
+    notes: [],
+    decks: [],
+    gpa: [],
+    game: { xp: 0, pomodorosToday: 0, pomodoroDate: todayKey(), studyDays: [], badges: [] },
   };
 }
+
 
 let state: StudyState | null = null;
 const listeners = new Set<() => void>();
