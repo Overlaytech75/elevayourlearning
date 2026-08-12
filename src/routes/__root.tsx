@@ -177,8 +177,8 @@ function RootComponent() {
             <header className="sticky top-0 z-20 flex h-14 items-center gap-2 border-b border-border/60 bg-card/40 px-3 backdrop-blur-xl">
               <SidebarTrigger className="text-muted-foreground transition-colors duration-200 hover:text-foreground" />
 
-              <div className="ml-1 min-w-0 truncate text-sm text-muted-foreground">
               <div className="ml-1 flex min-w-0 items-center gap-2 truncate text-sm text-muted-foreground">
+
                 <img src={elevaMark.url} alt="Eleva logo" className="h-6 w-6 shrink-0 object-contain" />
                 <span className="font-display font-medium text-foreground">Eleva</span>
                 <span className="text-muted-foreground/60">/</span>
