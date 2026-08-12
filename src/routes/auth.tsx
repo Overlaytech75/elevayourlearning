@@ -124,9 +124,8 @@ function AuthPage() {
       <main className="flex items-center justify-center px-4 py-12 sm:px-8">
         <div className="w-full max-w-sm">
           <div className="mb-8 text-center lg:hidden">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
-              <GraduationCap className="h-6 w-6" />
-            </div>
+            <img src={elevaMark.url} alt="Eleva logo" className="mx-auto h-14 w-14 object-contain" />
+
             <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight">Eleva</h1>
             <p className="mt-1 text-sm text-muted-foreground">
               Your degree, money and paperwork in one calm place.
