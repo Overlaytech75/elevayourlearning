@@ -83,14 +83,17 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
-            <Sparkles className="h-4 w-4" />
-          </div>
+          <img
+            src={elevaMark.url}
+            alt="Eleva logo"
+            className="h-8 w-8 shrink-0 object-contain"
+          />
           <div className="grid text-left leading-tight group-data-[collapsible=icon]:hidden">
             <span className="font-display text-sm font-semibold tracking-tight">Eleva</span>
-            <span className="text-[11px] text-muted-foreground">Personal OS</span>
+            <span className="text-[11px] text-muted-foreground">Your learning, elevated</span>
           </div>
         </div>
+
       </SidebarHeader>
 
       <SidebarContent>
