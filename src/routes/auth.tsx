@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { useAuth } from "@/lib/auth";
 import { startPreview } from "@/components/preview-gate";
+import elevaMark from "@/assets/eleva-mark.png.asset.json";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
