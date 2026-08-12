@@ -174,7 +174,7 @@ export function subscribe(fn: () => void) {
 // Stable empty snapshot used for SSR and first client render to avoid
 // hydration mismatches (localStorage is only available after mount).
 const EMPTY_STATE: AppState = {
-  user: { name: "Sakif" },
+  user: { name: "" },
   semesters: [],
   courses: [],
   assessments: [],
