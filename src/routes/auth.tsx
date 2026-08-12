@@ -86,11 +86,10 @@ function AuthPage() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--primary)_28%,transparent),transparent_60%)]" />
         <div className="relative">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">
-              <GraduationCap className="h-5 w-5" />
-            </div>
+            <img src={elevaMark.url} alt="Eleva logo" className="h-10 w-10 object-contain" />
             <span className="font-display text-xl font-semibold tracking-tight">Eleva</span>
           </div>
+
 
           <h1 className="mt-14 max-w-md font-display text-4xl font-semibold leading-tight tracking-tight">
             The calm operating system for student life.
