@@ -5,7 +5,6 @@ import {
   CalendarClock,
   Wallet,
   Target,
-  Sparkles,
   CheckSquare,
   BarChart3,
   Bot,
@@ -36,6 +35,7 @@ import {
 import { useTheme } from "@/lib/theme";
 import { useAuth, displayNameOf, signOut } from "@/lib/auth";
 import { clearLocalData } from "@/lib/local-reset";
+import elevaMark from "@/assets/eleva-mark.png.asset.json";
 
 
 const primary = [
