@@ -206,7 +206,19 @@ function AuthPage() {
               Take a 5-minute tour
             </button>
           </p>
+
+          <p className="mt-3 text-center text-xs text-muted-foreground">
+            Need a hand?{" "}
+            <Link to="/help" className="font-medium text-primary underline-offset-4 hover:underline">
+              Visit the help centre
+            </Link>
+          </p>
+
+          <div className="mt-5 flex justify-center lg:hidden">
+            <SocialLinks size="sm" />
+          </div>
         </div>
+
       </main>
     </div>
   );
