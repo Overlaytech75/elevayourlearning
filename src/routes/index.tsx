@@ -226,7 +226,10 @@ function Dashboard() {
         </div>
       </section>
 
+      <OnboardingChecklist />
+
       {/* Stat strip */}
+
       <section className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Due today" value={String(dueToday.length)} icon={<Flame className="h-4 w-4" />}
           tone={dueToday.length ? "warning" : "default"}
