@@ -15,6 +15,7 @@ import { Route as ProductivityRouteImport } from './routes/productivity'
 import { Route as NotesRouteImport } from './routes/notes'
 import { Route as MentorRouteImport } from './routes/mentor'
 import { Route as InternationalRouteImport } from './routes/international'
+import { Route as HelpRouteImport } from './routes/help'
 import { Route as GoalsRouteImport } from './routes/goals'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as CareerRouteImport } from './routes/career'
@@ -52,6 +53,11 @@ const MentorRoute = MentorRouteImport.update({
 const InternationalRoute = InternationalRouteImport.update({
   id: '/international',
   path: '/international',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GoalsRoute = GoalsRouteImport.update({
@@ -104,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/career': typeof CareerRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
+  '/help': typeof HelpRoute
   '/international': typeof InternationalRoute
   '/mentor': typeof MentorRoute
   '/notes': typeof NotesRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByTo {
   '/career': typeof CareerRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
+  '/help': typeof HelpRoute
   '/international': typeof InternationalRoute
   '/mentor': typeof MentorRoute
   '/notes': typeof NotesRoute
@@ -137,6 +145,7 @@ export interface FileRoutesById {
   '/career': typeof CareerRoute
   '/finance': typeof FinanceRoute
   '/goals': typeof GoalsRoute
+  '/help': typeof HelpRoute
   '/international': typeof InternationalRoute
   '/mentor': typeof MentorRoute
   '/notes': typeof NotesRoute
@@ -155,6 +164,7 @@ export interface FileRouteTypes {
     | '/career'
     | '/finance'
     | '/goals'
+    | '/help'
     | '/international'
     | '/mentor'
     | '/notes'
@@ -171,6 +181,7 @@ export interface FileRouteTypes {
     | '/career'
     | '/finance'
     | '/goals'
+    | '/help'
     | '/international'
     | '/mentor'
     | '/notes'
@@ -187,6 +198,7 @@ export interface FileRouteTypes {
     | '/career'
     | '/finance'
     | '/goals'
+    | '/help'
     | '/international'
     | '/mentor'
     | '/notes'
@@ -204,6 +216,7 @@ export interface RootRouteChildren {
   CareerRoute: typeof CareerRoute
   FinanceRoute: typeof FinanceRoute
   GoalsRoute: typeof GoalsRoute
+  HelpRoute: typeof HelpRoute
   InternationalRoute: typeof InternationalRoute
   MentorRoute: typeof MentorRoute
   NotesRoute: typeof NotesRoute
@@ -254,6 +267,13 @@ declare module '@tanstack/react-router' {
       path: '/international'
       fullPath: '/international'
       preLoaderRoute: typeof InternationalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/goals': {
@@ -324,6 +344,7 @@ const rootRouteChildren: RootRouteChildren = {
   CareerRoute: CareerRoute,
   FinanceRoute: FinanceRoute,
   GoalsRoute: GoalsRoute,
+  HelpRoute: HelpRoute,
   InternationalRoute: InternationalRoute,
   MentorRoute: MentorRoute,
   NotesRoute: NotesRoute,
