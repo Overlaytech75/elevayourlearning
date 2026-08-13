@@ -4,6 +4,7 @@ import { FileText, Plus, Trash2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
 import { Card, CardContent } from "@/components/ui/card";
+import { EmptyState } from "@/components/empty-state";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
