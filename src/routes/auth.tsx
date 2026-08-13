@@ -115,9 +115,13 @@ function AuthPage() {
           </ul>
         </div>
 
-        <p className="relative text-xs text-muted-foreground">
-          Built for students juggling deadlines, shifts and visas.
-        </p>
+        <div className="relative flex items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground">
+            Built for students juggling deadlines, shifts and visas.
+          </p>
+          <SocialLinks size="sm" />
+        </div>
+
       </aside>
 
       {/* Sign-in panel */}
