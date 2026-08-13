@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Loader2, BookOpen, Wallet, Globe2 } from "lucide-react";
 import { toast } from "sonner";
@@ -11,7 +11,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { useAuth } from "@/lib/auth";
 import { startPreview } from "@/components/preview-gate";
+import { SocialLinks } from "@/components/social-links";
 import elevaMark from "@/assets/eleva-mark.png.asset.json";
+
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -115,9 +117,13 @@ function AuthPage() {
           </ul>
         </div>
 
-        <p className="relative text-xs text-muted-foreground">
-          Built for students juggling deadlines, shifts and visas.
-        </p>
+        <div className="relative flex items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground">
+            Built for students juggling deadlines, shifts and visas.
+          </p>
+          <SocialLinks size="sm" />
+        </div>
+
       </aside>
 
       {/* Sign-in panel */}
@@ -200,7 +206,19 @@ function AuthPage() {
               Take a 5-minute tour
             </button>
           </p>
+
+          <p className="mt-3 text-center text-xs text-muted-foreground">
+            Need a hand?{" "}
+            <Link to="/help" className="font-medium text-primary underline-offset-4 hover:underline">
+              Visit the help centre
+            </Link>
+          </p>
+
+          <div className="mt-5 flex justify-center lg:hidden">
+            <SocialLinks size="sm" />
+          </div>
         </div>
+
       </main>
     </div>
   );

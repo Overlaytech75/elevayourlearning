@@ -13,10 +13,12 @@ import {
   Wand2,
   Globe2,
   Briefcase,
+  LifeBuoy,
   Moon,
   LogOut,
   Sun,
 } from "lucide-react";
+
 
 
 import {
@@ -35,7 +37,9 @@ import {
 import { useTheme } from "@/lib/theme";
 import { useAuth, displayNameOf, signOut } from "@/lib/auth";
 import { clearLocalData } from "@/lib/local-reset";
+import { SocialLinks } from "@/components/social-links";
 import elevaMark from "@/assets/eleva-mark.png.asset.json";
+
 
 
 const primary = [
@@ -58,7 +62,9 @@ const secondary = [
   { title: "Career", url: "/career", icon: Briefcase },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
   { title: "AI Mentor", url: "/mentor", icon: Bot },
+  { title: "Help", url: "/help", icon: LifeBuoy },
 ];
+
 
 
 export function AppSidebar() {
@@ -174,7 +180,11 @@ export function AppSidebar() {
             {mode === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
         </div>
+        <div className="px-2 pb-1 group-data-[collapsible=icon]:hidden">
+          <SocialLinks size="sm" />
+        </div>
         {user ? (
+
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton tooltip="Sign out" onClick={handleSignOut}>

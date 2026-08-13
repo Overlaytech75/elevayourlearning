@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Plus, Trash2, Flame, CheckSquare } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { EmptyState } from "@/components/empty-state";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -119,8 +120,13 @@ function ProductivityPage() {
                 <TaskRow key={t.id} t={t} />
               ))}
               {openTasks.length === 0 && (
-                <p className="rounded-xl border border-dashed border-border/60 p-6 text-center text-sm text-muted-foreground">All clear. Nice.</p>
+                <EmptyState
+                  title="Nothing open"
+                  body="Add a task with a priority and due date — anything due today or overdue shows up in your reminders."
+                  className="py-8"
+                />
               )}
+
             </div>
 
             {doneTasks.length > 0 && (

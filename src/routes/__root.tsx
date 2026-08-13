@@ -15,9 +15,12 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { NotificationBell } from "@/components/notification-bell";
 import { Toaster } from "@/components/ui/sonner";
 import { PreviewGate } from "@/components/preview-gate";
+import { useAuth } from "@/lib/auth";
 import elevaMark from "@/assets/eleva-mark.png.asset.json";
+
 
 
 function NotFoundComponent() {
@@ -150,6 +153,7 @@ const SECTION_LABELS: { prefix: string; label: string }[] = [
   { prefix: "/analytics", label: "Analytics" },
   { prefix: "/international", label: "International" },
   { prefix: "/career", label: "Career" },
+  { prefix: "/help", label: "Help" },
 ];
 
 function sectionLabel(pathname: string) {
@@ -159,46 +163,58 @@ function sectionLabel(pathname: string) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const bare = pathname.startsWith("/auth");
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AppShell pathname={pathname} />
+    </QueryClientProvider>
+  );
+}
+
+function AppShell({ pathname }: { pathname: string }) {
+  const { user } = useAuth();
+  // The sign-in landing always renders full-bleed; the help centre does too for
+  // signed-out visitors so they can read it without app chrome.
+  const bare = pathname.startsWith("/auth") || (pathname.startsWith("/help") && !user);
 
   if (bare) {
     return (
-      <QueryClientProvider client={queryClient}>
+      <>
         <Outlet />
         <Toaster />
-      </QueryClientProvider>
+      </>
     );
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <SidebarProvider>
-        <div className="flex min-h-screen w-full bg-transparent">
-          <AppSidebar />
-          <div className="flex min-w-0 flex-1 flex-col">
-            <header className="sticky top-0 z-20 flex h-14 items-center gap-2 border-b border-border/60 bg-card/40 px-3 backdrop-blur-xl">
-              <SidebarTrigger className="text-muted-foreground transition-colors duration-200 hover:text-foreground" />
+    <SidebarProvider>
+      <div className="flex min-h-screen w-full bg-transparent">
+        <AppSidebar />
+        <div className="flex min-w-0 flex-1 flex-col">
+          <header className="sticky top-0 z-20 flex h-14 items-center gap-2 border-b border-border/60 bg-card/40 px-3 backdrop-blur-xl">
+            <SidebarTrigger className="text-muted-foreground transition-colors duration-200 hover:text-foreground" />
 
-              <div className="ml-1 flex min-w-0 items-center gap-2 truncate text-sm text-muted-foreground">
+            <div className="ml-1 flex min-w-0 flex-1 items-center gap-2 truncate text-sm text-muted-foreground">
+              <img src={elevaMark.url} alt="Eleva logo" className="h-6 w-6 shrink-0 object-contain" />
+              <span className="font-display font-medium text-foreground">Eleva</span>
+              <span className="text-muted-foreground/60">/</span>
+              <span className="truncate">{sectionLabel(pathname)}</span>
+            </div>
 
-                <img src={elevaMark.url} alt="Eleva logo" className="h-6 w-6 shrink-0 object-contain" />
-                <span className="font-display font-medium text-foreground">Eleva</span>
-                <span className="text-muted-foreground/60">/</span>
-                <span className="truncate">{sectionLabel(pathname)}</span>
-              </div>
-            </header>
+            <NotificationBell />
+          </header>
 
-            <main className="flex-1">
-              <PreviewGate>
-                <Outlet />
-              </PreviewGate>
-            </main>
+          <main className="flex-1">
+            <PreviewGate>
+              <Outlet />
+            </PreviewGate>
+          </main>
 
-          </div>
         </div>
-        <Toaster />
-      </SidebarProvider>
-    </QueryClientProvider>
+      </div>
+      <Toaster />
+    </SidebarProvider>
   );
+
 }
 

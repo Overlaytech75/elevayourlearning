@@ -32,7 +32,9 @@ export function PreviewGate({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isAuthRoute = pathname.startsWith("/auth");
+  // /auth and the help centre are always reachable without a session.
+  const isAuthRoute = pathname.startsWith("/auth") || pathname.startsWith("/help");
+
 
   const [mounted, setMounted] = useState(false);
   const [remaining, setRemaining] = useState<number | null>(null);

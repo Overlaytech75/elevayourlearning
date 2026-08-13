@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { Plus, TrendingUp, TrendingDown, Wallet, Trash2 } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { EmptyState } from "@/components/empty-state";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -86,10 +87,12 @@ function FinancePage() {
           </CardHeader>
           <CardContent className="space-y-1">
             {sortedTxns.length === 0 && (
-              <p className="rounded-xl border border-dashed border-border/60 p-6 text-center text-sm text-muted-foreground">
-                No transactions yet — add your first one.
-              </p>
+              <EmptyState
+                title="No transactions yet"
+                body="Log an expense or income above — categories power your budgets and the spending charts."
+              />
             )}
+
             {sortedTxns.slice(0, 20).map((t) => (
               <div key={t.id} className="group flex items-center justify-between rounded-lg px-3 py-2.5 hover:bg-accent/50">
                 <div className="min-w-0">
