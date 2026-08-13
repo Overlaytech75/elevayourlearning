@@ -150,6 +150,7 @@ const SECTION_LABELS: { prefix: string; label: string }[] = [
   { prefix: "/analytics", label: "Analytics" },
   { prefix: "/international", label: "International" },
   { prefix: "/career", label: "Career" },
+  { prefix: "/help", label: "Help" },
 ];
 
 function sectionLabel(pathname: string) {
@@ -159,16 +160,29 @@ function sectionLabel(pathname: string) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const bare = pathname.startsWith("/auth");
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AppShell pathname={pathname} />
+    </QueryClientProvider>
+  );
+}
+
+function AppShell({ pathname }: { pathname: string }) {
+  const { user } = useAuth();
+  // The sign-in landing always renders full-bleed; the help centre does too for
+  // signed-out visitors so they can read it without app chrome.
+  const bare = pathname.startsWith("/auth") || (pathname.startsWith("/help") && !user);
 
   if (bare) {
     return (
-      <QueryClientProvider client={queryClient}>
+      <>
         <Outlet />
         <Toaster />
-      </QueryClientProvider>
+      </>
     );
   }
+
 
   return (
     <QueryClientProvider client={queryClient}>
