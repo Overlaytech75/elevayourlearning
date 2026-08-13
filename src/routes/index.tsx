@@ -17,8 +17,10 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { AssessmentRow } from "@/components/assessment-row";
 import { AssessmentDialog } from "@/components/assessment-dialog";
+import { OnboardingChecklist } from "@/components/onboarding-checklist";
 import { useAppState, daysUntil, type Assessment } from "@/lib/store";
 import { useAuth, displayNameOf } from "@/lib/auth";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
