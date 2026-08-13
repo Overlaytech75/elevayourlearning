@@ -180,7 +180,11 @@ export function AppSidebar() {
             {mode === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
         </div>
+        <div className="px-2 pb-1 group-data-[collapsible=icon]:hidden">
+          <SocialLinks size="sm" />
+        </div>
         {user ? (
+
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton tooltip="Sign out" onClick={handleSignOut}>
