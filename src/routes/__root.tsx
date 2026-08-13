@@ -15,9 +15,12 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { NotificationBell } from "@/components/notification-bell";
 import { Toaster } from "@/components/ui/sonner";
 import { PreviewGate } from "@/components/preview-gate";
+import { useAuth } from "@/lib/auth";
 import elevaMark from "@/assets/eleva-mark.png.asset.json";
+
 
 
 function NotFoundComponent() {
