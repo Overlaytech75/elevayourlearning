@@ -37,7 +37,9 @@ import {
 import { useTheme } from "@/lib/theme";
 import { useAuth, displayNameOf, signOut } from "@/lib/auth";
 import { clearLocalData } from "@/lib/local-reset";
+import { SocialLinks } from "@/components/social-links";
 import elevaMark from "@/assets/eleva-mark.png.asset.json";
+
 
 
 const primary = [
@@ -60,7 +62,9 @@ const secondary = [
   { title: "Career", url: "/career", icon: Briefcase },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
   { title: "AI Mentor", url: "/mentor", icon: Bot },
+  { title: "Help", url: "/help", icon: LifeBuoy },
 ];
+
 
 
 export function AppSidebar() {
