@@ -13,10 +13,12 @@ import {
   Wand2,
   Globe2,
   Briefcase,
+  LifeBuoy,
   Moon,
   LogOut,
   Sun,
 } from "lucide-react";
+
 
 
 import {
