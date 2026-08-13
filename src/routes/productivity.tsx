@@ -119,8 +119,13 @@ function ProductivityPage() {
                 <TaskRow key={t.id} t={t} />
               ))}
               {openTasks.length === 0 && (
-                <p className="rounded-xl border border-dashed border-border/60 p-6 text-center text-sm text-muted-foreground">All clear. Nice.</p>
+                <EmptyState
+                  title="Nothing open"
+                  body="Add a task with a priority and due date — anything due today or overdue shows up in your reminders."
+                  className="py-8"
+                />
               )}
+
             </div>
 
             {doneTasks.length > 0 && (

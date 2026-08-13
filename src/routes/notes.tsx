@@ -70,10 +70,13 @@ function NotesPage() {
             </button>
           ))}
           {notes.length === 0 && (
-            <p className="rounded-xl border border-dashed border-border/60 p-6 text-center text-sm text-muted-foreground">
-              No notes yet.
-            </p>
+            <EmptyState
+              title="No notes yet"
+              body="Create one for a lecture, a summary, or to paste output from the AI tools. Markdown works."
+              className="py-8"
+            />
           )}
+
         </div>
 
         {active ? (

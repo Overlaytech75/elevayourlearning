@@ -123,10 +123,13 @@ function Academics() {
                   </button>
                 </div>
                 {semesterCourses.length === 0 && (
-                  <div className="rounded-xl border border-dashed border-border/60 p-6 text-center text-sm text-muted-foreground">
-                    No courses yet.
-                  </div>
+                  <EmptyState
+                    title="No courses yet"
+                    body="Add your subjects first — assessments, GPA and progress all hang off them."
+                    className="py-8"
+                  />
                 )}
+
                 {semesterCourses.map((c) => {
                   const count = assessments.filter((a) => a.courseId === c.id).length;
                   return (
@@ -185,10 +188,16 @@ function Academics() {
                   </CardHeader>
                   <CardContent className="space-y-2">
                     {list.length === 0 && (
-                      <div className="rounded-xl border border-dashed border-border/60 p-10 text-center text-sm text-muted-foreground">
-                        {q ? "No results." : "No assessments yet — add your first one."}
-                      </div>
+                      <EmptyState
+                        title={q ? "No results" : "No assessments yet"}
+                        body={
+                          q
+                            ? "Try a different search term."
+                            : "Add an assignment or exam with its weight and due date — it'll show up on your dashboard, timeline and reminders."
+                        }
+                      />
                     )}
+
                     {list.map((a) => (
                       <AssessmentRow
                         key={a.id}
