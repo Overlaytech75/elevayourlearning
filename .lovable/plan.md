@@ -1,40 +1,40 @@
-# Clean auth landing, clickable country resources, and a more engaging look
+# Help centre, social links, onboarding and reminders
 
-## 1. No app chrome on the sign-in page
+## 1. Help page (`/help`)
+A dedicated page linked from the sidebar (and from the sign-in page footer).
 
-Right now the sidebar and the "Eleva / Personal OS" header wrap every page, including sign-in — so a first-time visitor sees a half-built app behind the login form.
+- **Search box** that filters the FAQ list as you type.
+- **Prefilled FAQ chatbot**: a chat-style panel where the user taps one of the suggested questions and the "Eleva Helper" replies instantly with a written answer. No AI call, no cost, works signed-out. Answers cover:
+  - Nothing saves / where is my data stored
+  - How to add a course, assessment, task, expense, note
+  - How GPA is calculated and how weights work
+  - Signing in, Google sign-in, signing out, the 5-minute tour
+  - Dark mode and accent colour
+  - Why my account is empty (every account starts at zero)
+  - Using the AI Mentor and AI tools, and why they need sign-in
+  - International and Career hubs
+- Each answer can offer follow-up buttons and a direct link to the relevant page.
+- Below the chat: grouped FAQ accordion with the same content, so it's readable and skimmable without the chat.
+- A short "Still stuck?" block with the contact email and the social icons.
 
-- The root layout will render app chrome only for in-app routes. `/auth` (and the 404 page) render full-bleed, with no sidebar and no top bar.
-- The sign-in page becomes a proper landing: two-panel on desktop (brand/value panel with a soft gradient on the left, sign-in card on the right), single centered card on mobile.
-- Copy gets tightened: product name, one-line promise, three short value points (academics, money, visa & career), then Google + email sign-in and the "Take a 5-minute tour" link.
+## 2. Social links
+- Facebook, Instagram, X and Telegram icon buttons, opening in a new tab.
+- Shown in three places: the sidebar footer, the Help page, and the sign-in page.
+- Links live in one shared config file so you can change a URL in one spot. I'll wire them to placeholder profile URLs for now — send me the real ones and I'll swap them in (or you can edit the single file).
 
-## 2. International resources become real links
+## 3. Onboarding + empty-state guides
+- **First-run checklist** card on the dashboard: add your first course, add an assessment, log an expense, create a task, set a goal. Each item ticks off automatically as the data appears, and the card disappears (dismissible, remembered per browser) once done.
+- **Empty states** on Academics, Timeline, Productivity, Finance, Goals, Notes, International and Career: a short line explaining what belongs there plus the button that creates the first item — instead of a blank panel.
 
-Each country resource is currently just a name and a note. Every entry gets a real URL and becomes a clickable card that opens the official site in a new tab (with an external-link icon and hover state).
-
-Links to add:
-
-- Australia — Home Affairs VEVO, ATO (TFN/returns), Fair Work Ombudsman, Study Australia
-- Canada — IRCC study permit, CRA international students
-- United Kingdom — UKVI Student route, HMRC student tax
-- United States — SEVP/Study in the States F-1, IRS Form 8843
-
-I'll also add a couple of extra useful entries per country (e.g. health cover / national insurance) so the panel doesn't look thin.
-
-## 3. Colour and layout polish
-
-Keeping Cloud White + Space Grotesk/DM Sans, but raising the craft:
-
-- **Depth instead of flatness**: soft layered shadows and a subtle tinted surface for cards, so sections read as panels rather than boxes on white.
-- **Accent discipline**: one blue accent for primary actions and progress; amber for "due soon"; red only for overdue/over-limit. Countdown cards get a coloured left edge so urgency is scannable.
-- **Page headers**: every page gets a consistent header block (eyebrow, title, one-line subtitle) and the top bar shows the actual section name instead of a static "Personal OS".
-- **Density and rhythm**: consistent card padding, section spacing, and a max content width so wide screens don't stretch.
-- **Empty states**: lists that are empty currently show nothing; they'll show a short prompt plus the action that fills them.
-- **Motion**: 150–200ms hover/press transitions on cards and buttons; nothing bouncy.
+## 4. Notifications & reminders
+- A **bell menu** in the top bar with an unread count.
+- Generated live from existing data, no backend needed: assessments due in the next 7 days, anything overdue, tasks due today or overdue, goals past their deadline, and budget categories over their limit.
+- Grouped by urgency (overdue / today / this week), each row clicks through to the right page.
+- Read/dismissed state stored locally so the badge stays quiet once reviewed.
 
 ## Technical notes
-
-- `src/routes/__root.tsx`: split the shell — read the pathname via `useRouterState` and render either the sidebar shell or a bare `<Outlet />` for `/auth`. `PreviewGate` stays wrapped around in-app routes only.
-- `src/routes/auth.tsx`: restructure into the two-panel landing; no logic changes to the Supabase sign-in flow or the preview timer.
-- `src/lib/life-store.ts`: add `url` to the `COUNTRY_RESOURCES` entry shape; `src/routes/international.tsx` renders each as an `<a target="_blank" rel="noopener noreferrer">`.
-- Visual tokens (surface, shadow layers, urgency colours) go in `src/styles.css` as semantic tokens; components use tokens only, no hardcoded colours.
+- New: `src/routes/help.tsx`, `src/lib/help-content.ts` (FAQ data), `src/lib/social.ts` (link config), `src/components/social-links.tsx`, `src/components/notification-bell.tsx`, `src/components/onboarding-checklist.tsx`, `src/components/empty-state.tsx`.
+- Edits: `src/components/app-sidebar.tsx` (Help link + socials), `src/routes/__root.tsx` (bell in header), `src/routes/auth.tsx` (socials + help link), `src/routes/index.tsx` (checklist), and the module routes for empty states.
+- Notifications and checklist derive from the existing local stores; no schema or backend changes.
+- The Help page renders with no sidebar chrome when opened while signed out, matching the auth landing treatment.
+- Page-level `head()` metadata added for `/help`.
