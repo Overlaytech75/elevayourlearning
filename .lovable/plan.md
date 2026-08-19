@@ -43,12 +43,12 @@ Implementation:
 Use Stripe for billing (Lovable's default recommendation). Add a `payments` integration with a `subscriptions` table.
 
 Tiers:
-- **Free:** cloud sync, unlimited courses/tasks/finance, 10 AI messages/week, 3 AI tool generations/week.
-- **Premium:** unlimited AI mentor and AI tools, document uploads, calendar export, and priority support.
+- **Free:** cloud sync, unlimited courses/tasks/finance, 5 AI mentor messages per 5 hours, 3 AI tool generations per day, and 5 document uploads per day.
+- **Premium:** unlimited AI mentor and AI tools, unlimited document uploads, calendar export, and priority support.
 
 Feature gates:
 - Add `useSubscription()` hook that reads `subscriptions` row.
-- Show an upgrade prompt when a free user hits an AI limit.
+- Track AI usage counters in `ai_usage` against the free limits above and show an upgrade prompt when a limit is hit.
 - Add a `PremiumBadge` component and a `/settings/billing` route.
 
 ## Phase 4 — PWA installability
