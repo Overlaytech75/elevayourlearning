@@ -173,6 +173,30 @@ export type Database = {
         }
         Relationships: []
       }
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       courses: {
         Row: {
           code: string
@@ -204,6 +228,30 @@ export type Database = {
           id?: string
           name?: string
           semester_id?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      decks: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
           updated_at?: string
           user_id?: string
         }
@@ -245,6 +293,75 @@ export type Database = {
         }
         Relationships: []
       }
+      flashcards: {
+        Row: {
+          back: string
+          created_at: string
+          deck_id: string
+          front: string
+          id: string
+          known: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          back: string
+          created_at?: string
+          deck_id: string
+          front: string
+          id?: string
+          known?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          back?: string
+          created_at?: string
+          deck_id?: string
+          front?: string
+          id?: string
+          known?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      gamification: {
+        Row: {
+          badges: string[]
+          created_at: string
+          id: string
+          pomodoro_date: string
+          pomodoros_today: number
+          study_days: string[]
+          updated_at: string
+          user_id: string
+          xp: number
+        }
+        Insert: {
+          badges?: string[]
+          created_at?: string
+          id?: string
+          pomodoro_date?: string
+          pomodoros_today?: number
+          study_days?: string[]
+          updated_at?: string
+          user_id: string
+          xp?: number
+        }
+        Update: {
+          badges?: string[]
+          created_at?: string
+          id?: string
+          pomodoro_date?: string
+          pomodoros_today?: number
+          study_days?: string[]
+          updated_at?: string
+          user_id?: string
+          xp?: number
+        }
+        Relationships: []
+      }
       goals: {
         Row: {
           category: string
@@ -282,6 +399,36 @@ export type Database = {
           target?: number
           title?: string
           unit?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      gpa_courses: {
+        Row: {
+          created_at: string
+          credits: number
+          grade: string
+          id: string
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          credits?: number
+          grade?: string
+          id?: string
+          name?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          credits?: number
+          grade?: string
+          id?: string
+          name?: string
           updated_at?: string
           user_id?: string
         }
