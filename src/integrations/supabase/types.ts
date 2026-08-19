@@ -14,6 +14,528 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_usage: {
+        Row: {
+          created_at: string
+          id: string
+          mentor_count: number
+          mentor_window_start: string
+          tools_count: number
+          tools_window_start: string
+          updated_at: string
+          uploads_count: number
+          uploads_window_start: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          mentor_count?: number
+          mentor_window_start?: string
+          tools_count?: number
+          tools_window_start?: string
+          updated_at?: string
+          uploads_count?: number
+          uploads_window_start?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          mentor_count?: number
+          mentor_window_start?: string
+          tools_count?: number
+          tools_window_start?: string
+          updated_at?: string
+          uploads_count?: number
+          uploads_window_start?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      assessments: {
+        Row: {
+          actual_hours: number
+          course_id: string | null
+          created_at: string
+          difficulty: number
+          due_date: string | null
+          estimated_hours: number
+          grade: number | null
+          id: string
+          notes: string | null
+          priority: string
+          progress: number
+          status: string
+          title: string
+          type: string | null
+          updated_at: string
+          user_id: string
+          weight: number
+        }
+        Insert: {
+          actual_hours?: number
+          course_id?: string | null
+          created_at?: string
+          difficulty?: number
+          due_date?: string | null
+          estimated_hours?: number
+          grade?: number | null
+          id?: string
+          notes?: string | null
+          priority?: string
+          progress?: number
+          status?: string
+          title: string
+          type?: string | null
+          updated_at?: string
+          user_id: string
+          weight?: number
+        }
+        Update: {
+          actual_hours?: number
+          course_id?: string | null
+          created_at?: string
+          difficulty?: number
+          due_date?: string | null
+          estimated_hours?: number
+          grade?: number | null
+          id?: string
+          notes?: string | null
+          priority?: string
+          progress?: number
+          status?: string
+          title?: string
+          type?: string | null
+          updated_at?: string
+          user_id?: string
+          weight?: number
+        }
+        Relationships: []
+      }
+      budgets: {
+        Row: {
+          category: string
+          created_at: string
+          id: string
+          monthly_limit: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          id?: string
+          monthly_limit?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          id?: string
+          monthly_limit?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      career_assets: {
+        Row: {
+          created_at: string
+          detail: string | null
+          id: string
+          kind: string
+          title: string
+          updated_at: string
+          url: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          detail?: string | null
+          id?: string
+          kind?: string
+          title: string
+          updated_at?: string
+          url?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          detail?: string | null
+          id?: string
+          kind?: string
+          title?: string
+          updated_at?: string
+          url?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      courses: {
+        Row: {
+          code: string
+          color: string | null
+          created_at: string
+          credits: number | null
+          id: string
+          name: string
+          semester_id: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          code: string
+          color?: string | null
+          created_at?: string
+          credits?: number | null
+          id?: string
+          name: string
+          semester_id?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          code?: string
+          color?: string | null
+          created_at?: string
+          credits?: number | null
+          id?: string
+          name?: string
+          semester_id?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      decks: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      documents: {
+        Row: {
+          category: string
+          created_at: string
+          expiry: string | null
+          have: boolean
+          id: string
+          name: string
+          note: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          expiry?: string | null
+          have?: boolean
+          id?: string
+          name: string
+          note?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          expiry?: string | null
+          have?: boolean
+          id?: string
+          name?: string
+          note?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      flashcards: {
+        Row: {
+          back: string
+          created_at: string
+          deck_id: string
+          front: string
+          id: string
+          known: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          back: string
+          created_at?: string
+          deck_id: string
+          front: string
+          id?: string
+          known?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          back?: string
+          created_at?: string
+          deck_id?: string
+          front?: string
+          id?: string
+          known?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      gamification: {
+        Row: {
+          badges: string[]
+          created_at: string
+          id: string
+          pomodoro_date: string
+          pomodoros_today: number
+          study_days: string[]
+          updated_at: string
+          user_id: string
+          xp: number
+        }
+        Insert: {
+          badges?: string[]
+          created_at?: string
+          id?: string
+          pomodoro_date?: string
+          pomodoros_today?: number
+          study_days?: string[]
+          updated_at?: string
+          user_id: string
+          xp?: number
+        }
+        Update: {
+          badges?: string[]
+          created_at?: string
+          id?: string
+          pomodoro_date?: string
+          pomodoros_today?: number
+          study_days?: string[]
+          updated_at?: string
+          user_id?: string
+          xp?: number
+        }
+        Relationships: []
+      }
+      goals: {
+        Row: {
+          category: string
+          created_at: string
+          current: number
+          deadline: string | null
+          id: string
+          milestones: Json
+          target: number
+          title: string
+          unit: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          current?: number
+          deadline?: string | null
+          id?: string
+          milestones?: Json
+          target?: number
+          title: string
+          unit?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          current?: number
+          deadline?: string | null
+          id?: string
+          milestones?: Json
+          target?: number
+          title?: string
+          unit?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      gpa_courses: {
+        Row: {
+          created_at: string
+          credits: number
+          grade: string
+          id: string
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          credits?: number
+          grade?: string
+          id?: string
+          name?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          credits?: number
+          grade?: string
+          id?: string
+          name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      habits: {
+        Row: {
+          completions: string[]
+          created_at: string
+          emoji: string | null
+          id: string
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completions?: string[]
+          created_at?: string
+          emoji?: string | null
+          id?: string
+          name: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completions?: string[]
+          created_at?: string
+          emoji?: string | null
+          id?: string
+          name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      job_applications: {
+        Row: {
+          applied_on: string | null
+          company: string
+          created_at: string
+          id: string
+          link: string | null
+          notes: string | null
+          role: string
+          status: string
+          type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          applied_on?: string | null
+          company: string
+          created_at?: string
+          id?: string
+          link?: string | null
+          notes?: string | null
+          role: string
+          status?: string
+          type?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          applied_on?: string | null
+          company?: string
+          created_at?: string
+          id?: string
+          link?: string | null
+          notes?: string | null
+          role?: string
+          status?: string
+          type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      notes: {
+        Row: {
+          body: string
+          created_at: string
+          id: string
+          tags: string[]
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          body?: string
+          created_at?: string
+          id?: string
+          tags?: string[]
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          id?: string
+          tags?: string[]
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -35,6 +557,348 @@ export type Database = {
           display_name?: string | null
           id?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      scholarships: {
+        Row: {
+          amount: number
+          created_at: string
+          deadline: string | null
+          id: string
+          link: string | null
+          name: string
+          provider: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          deadline?: string | null
+          id?: string
+          link?: string | null
+          name: string
+          provider?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          deadline?: string | null
+          id?: string
+          link?: string | null
+          name?: string
+          provider?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      semesters: {
+        Row: {
+          active: boolean
+          created_at: string
+          end_date: string
+          id: string
+          name: string
+          start_date: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          end_date: string
+          id?: string
+          name: string
+          start_date: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          end_date?: string
+          id?: string
+          name?: string
+          start_date?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      study_sessions: {
+        Row: {
+          course_id: string | null
+          created_at: string
+          date: string
+          focus_score: number
+          id: string
+          minutes: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          course_id?: string | null
+          created_at?: string
+          date: string
+          focus_score?: number
+          id?: string
+          minutes?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          course_id?: string | null
+          created_at?: string
+          date?: string
+          focus_score?: number
+          id?: string
+          minutes?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      subscriptions: {
+        Row: {
+          created_at: string
+          current_period_end: string | null
+          id: string
+          status: string
+          tier: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          current_period_end?: string | null
+          id?: string
+          status?: string
+          tier?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          current_period_end?: string | null
+          id?: string
+          status?: string
+          tier?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          created_at: string
+          done: boolean
+          due_date: string | null
+          id: string
+          priority: string
+          tag: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          done?: boolean
+          due_date?: string | null
+          id?: string
+          priority?: string
+          tag?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          done?: boolean
+          due_date?: string | null
+          id?: string
+          priority?: string
+          tag?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      transactions: {
+        Row: {
+          amount: number
+          category: string
+          created_at: string
+          date: string
+          id: string
+          note: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          category: string
+          created_at?: string
+          date: string
+          id?: string
+          note?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          category?: string
+          created_at?: string
+          date?: string
+          id?: string
+          note?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      tuition_payments: {
+        Row: {
+          amount: number
+          created_at: string
+          due_date: string | null
+          id: string
+          label: string
+          paid: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          label: string
+          paid?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          label?: string
+          paid?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_settings: {
+        Row: {
+          created_at: string
+          id: string
+          onboarding_done: boolean
+          theme: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          onboarding_done?: boolean
+          theme?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          onboarding_done?: boolean
+          theme?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      visa_info: {
+        Row: {
+          coe_end: string | null
+          coe_provider: string
+          country: string
+          created_at: string
+          expiry: string | null
+          id: string
+          oshc_expiry: string | null
+          oshc_provider: string
+          subclass: string
+          tfn: string
+          updated_at: string
+          user_id: string
+          work_limit_hours_per_fortnight: number
+        }
+        Insert: {
+          coe_end?: string | null
+          coe_provider?: string
+          country?: string
+          created_at?: string
+          expiry?: string | null
+          id?: string
+          oshc_expiry?: string | null
+          oshc_provider?: string
+          subclass?: string
+          tfn?: string
+          updated_at?: string
+          user_id: string
+          work_limit_hours_per_fortnight?: number
+        }
+        Update: {
+          coe_end?: string | null
+          coe_provider?: string
+          country?: string
+          created_at?: string
+          expiry?: string | null
+          id?: string
+          oshc_expiry?: string | null
+          oshc_provider?: string
+          subclass?: string
+          tfn?: string
+          updated_at?: string
+          user_id?: string
+          work_limit_hours_per_fortnight?: number
+        }
+        Relationships: []
+      }
+      work_shifts: {
+        Row: {
+          created_at: string
+          date: string
+          employer: string
+          hours: number
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          employer?: string
+          hours?: number
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          employer?: string
+          hours?: number
+          id?: string
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
