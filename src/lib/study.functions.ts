@@ -4,7 +4,7 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { generateText } from "ai";
 import { z } from "zod";
 
-import { createLovableAiGatewayProvider } from "./ai-gateway.server";
+import { AI_UNAVAILABLE_REPLY, resolveAiProvider } from "./ai-gateway.server";
 
 const ToolInput = z.object({
   tool: z.enum([
@@ -46,13 +46,12 @@ export const runStudyTool = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => ToolInput.parse(input))
   .handler(async ({ data }) => {
-    const key = process.env.LOVABLE_API_KEY;
-    if (!key) return { result: "AI isn't configured yet (missing key)." };
+    const provider = resolveAiProvider();
+    if (!provider) return { result: AI_UNAVAILABLE_REPLY, unavailable: true as const };
 
-    const gateway = createLovableAiGatewayProvider(key);
     try {
       const { text } = await generateText({
-        model: gateway("google/gemini-3.6-flash"),
+        model: provider.model(),
         system:
           "You are Eleva, an expert academic tutor. Be accurate, concise and practical. When asked for JSON, output raw JSON only.",
         prompt: PROMPTS[data.tool](data),
