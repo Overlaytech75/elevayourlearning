@@ -4,7 +4,7 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { generateText } from "ai";
 import { z } from "zod";
 
-import { createLovableAiGatewayProvider } from "./ai-gateway.server";
+import { AI_UNAVAILABLE_REPLY, resolveAiProvider } from "./ai-gateway.server";
 
 const MessageSchema = z.object({
   role: z.enum(["user", "assistant"]),
@@ -66,16 +66,10 @@ export const askMentor = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) => AskInput.parse(input))
   .handler(async ({ data }) => {
-    const key = process.env.LOVABLE_API_KEY;
-    if (!key) {
-      return {
-        reply:
-          "The AI mentor isn't configured yet (missing LOVABLE_API_KEY). Ask the project owner to enable Lovable AI.",
-      };
-    }
+    const provider = resolveAiProvider();
+    if (!provider) return { reply: AI_UNAVAILABLE_REPLY, unavailable: true as const };
 
-    const gateway = createLovableAiGatewayProvider(key);
-    const model = gateway("google/gemini-3.6-flash");
+    const model = provider.model();
 
     const system = [
       `You are Eleva, a warm, precise personal mentor for ${data.context.userName}, a university student.`,
