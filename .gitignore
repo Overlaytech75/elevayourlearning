@@ -33,3 +33,10 @@ dist-ssr
 
 # Local environment overrides (never commit)
 .env.local
+
+# Local environment files
+.env
+.env.*
+!.env.example
+supabase/.temp/
+supabase/.branches/
