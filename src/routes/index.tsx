@@ -150,19 +150,19 @@ function Dashboard() {
           <div
             aria-hidden
             className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full opacity-70"
-            style={{ background: "radial-gradient(closest-side, oklch(0.60 0.19 258 / 0.18), transparent)" }}
+            style={{ background: "radial-gradient(closest-side, oklch(0.65 0.22 45 / 0.18), transparent)" }}
           />
           <div
             aria-hidden
             className="pointer-events-none absolute -right-32 -bottom-32 h-80 w-80 rounded-full opacity-60"
-            style={{ background: "radial-gradient(closest-side, oklch(0.65 0.20 320 / 0.16), transparent)" }}
+            style={{ background: "radial-gradient(closest-side, oklch(0.35 0.12 250 / 0.16), transparent)" }}
           />
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 opacity-[0.35]"
             style={{
               backgroundImage:
-                "linear-gradient(to right, oklch(0.60 0.19 258 / 0.06) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.60 0.19 258 / 0.06) 1px, transparent 1px)",
+                "linear-gradient(to right, oklch(0.65 0.22 45 / 0.06) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.65 0.22 45 / 0.06) 1px, transparent 1px)",
               backgroundSize: "28px 28px",
               maskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)",
             }}
@@ -278,7 +278,7 @@ function Dashboard() {
             className="relative overflow-hidden border-0 text-primary-foreground shadow-[var(--shadow-elevated)]"
             style={{
               background:
-                "linear-gradient(135deg, oklch(0.62 0.11 235), oklch(0.48 0.09 220) 55%, oklch(0.34 0.06 215))",
+                "linear-gradient(135deg, oklch(0.65 0.22 45), oklch(0.60 0.18 55) 55%, oklch(0.50 0.12 65))",
             }}
 
           >
