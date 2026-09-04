@@ -38,6 +38,8 @@ import {
   useStudyState,
 } from "@/lib/study-store";
 import { runStudyTool } from "@/lib/study.functions";
+import { AI_ENABLED } from "@/lib/env";
+import { AiUnavailable } from "@/components/ai-unavailable";
 
 export const Route = createFileRoute("/study")({
   head: () => ({
@@ -274,6 +276,7 @@ function Flashcards() {
   const [activeDeck, setActiveDeck] = useState<string | null>(null);
 
   const generate = async () => {
+    if (!AI_ENABLED) return;
     if (!source.trim()) return toast.error("Paste some notes first.");
     setBusy(true);
     try {
@@ -311,9 +314,10 @@ function Flashcards() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
+          {!AI_ENABLED && <AiUnavailable />}
           <div className="space-y-1.5">
             <Label>Deck name</Label>
-            <Input value={deckName} onChange={(e) => setDeckName(e.target.value)} placeholder="Networking week 4" />
+            <Input value={deckName} onChange={(e) => setDeckName(e.target.value)} placeholder="Networking week 4" disabled={!AI_ENABLED} />
           </div>
           <div className="space-y-1.5">
             <Label>Your notes</Label>
@@ -321,10 +325,11 @@ function Flashcards() {
               rows={8}
               value={source}
               onChange={(e) => setSource(e.target.value)}
-              placeholder="Paste lecture notes, a textbook section, or a summary…"
+              placeholder={AI_ENABLED ? "Paste lecture notes, a textbook section, or a summary…" : "AI flashcard generation is unavailable in local development"}
+              disabled={!AI_ENABLED}
             />
           </div>
-          <Button className="w-full" disabled={busy} onClick={generate}>
+          <Button className="w-full" disabled={busy || !AI_ENABLED} onClick={generate}>
             {busy ? "Generating…" : "Create flashcards"}
           </Button>
         </CardContent>

@@ -12,6 +12,7 @@ import { lovable } from "@/integrations/lovable/index";
 import { useAuth } from "@/lib/auth";
 import { startPreview } from "@/components/preview-gate";
 import { SocialLinks } from "@/components/social-links";
+import { GOOGLE_AUTH_ENABLED } from "@/lib/env";
 import elevaMark from "@/assets/eleva-mark.png.asset.json";
 
 
@@ -142,12 +143,16 @@ function AuthPage() {
             <h2 className="font-display text-lg font-semibold tracking-tight">Get started</h2>
             <p className="mt-1 text-sm text-muted-foreground">Free, and takes under a minute.</p>
 
-            <Button variant="outline" className="mt-5 w-full transition-all duration-200" onClick={google}>
-              Continue with Google
-            </Button>
-            <div className="my-4 flex items-center gap-3 text-xs text-muted-foreground">
-              <span className="h-px flex-1 bg-border" /> or email <span className="h-px flex-1 bg-border" />
-            </div>
+            {GOOGLE_AUTH_ENABLED && (
+              <>
+                <Button variant="outline" className="mt-5 w-full transition-all duration-200" onClick={google}>
+                  Continue with Google
+                </Button>
+                <div className="my-4 flex items-center gap-3 text-xs text-muted-foreground">
+                  <span className="h-px flex-1 bg-border" /> or email <span className="h-px flex-1 bg-border" />
+                </div>
+              </>
+            )}
 
             <Tabs defaultValue="signin">
               <TabsList className="grid w-full grid-cols-2">
