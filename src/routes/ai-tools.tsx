@@ -27,6 +27,8 @@ import {
 } from "@/components/ui/select";
 import { runStudyTool } from "@/lib/study.functions";
 import { studyActions } from "@/lib/study-store";
+import { AI_ENABLED } from "@/lib/env";
+import { AiUnavailable } from "@/components/ai-unavailable";
 
 export const Route = createFileRoute("/ai-tools")({
   head: () => ({
@@ -100,6 +102,8 @@ function AiToolsPage() {
         </p>
       </header>
 
+      {!AI_ENABLED && <AiUnavailable className="mb-6" />}
+
       <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {TOOLS.map((t) => {
           const on = t.id === tool;
@@ -136,7 +140,8 @@ function AiToolsPage() {
               rows={14}
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder={active.placeholder}
+              placeholder={AI_ENABLED ? active.placeholder : "AI tools are unavailable in local development"}
+              disabled={!AI_ENABLED}
             />
 
             <div className="flex flex-wrap gap-3">
@@ -182,7 +187,7 @@ function AiToolsPage() {
               )}
             </div>
 
-            <Button className="w-full gap-1.5" disabled={busy} onClick={run}>
+            <Button className="w-full gap-1.5" disabled={busy || !AI_ENABLED} onClick={run}>
               {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
               {busy ? "Working…" : `Run ${active.label.toLowerCase()}`}
             </Button>
