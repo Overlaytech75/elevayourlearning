@@ -38,6 +38,8 @@ import {
   useStudyState,
 } from "@/lib/study-store";
 import { runStudyTool } from "@/lib/study.functions";
+import { AI_ENABLED } from "@/lib/env";
+import { AiUnavailable } from "@/components/ai-unavailable";
 
 export const Route = createFileRoute("/study")({
   head: () => ({
