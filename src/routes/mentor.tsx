@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAppState, actions, daysUntil, type ChatMessage } from "@/lib/store";
 import { askMentor } from "@/lib/mentor.functions";
+import { AI_ENABLED } from "@/lib/env";
+import { AiUnavailable } from "@/components/ai-unavailable";
 
 const searchSchema = z.object({ q: z.string().optional() });
 
@@ -114,7 +116,7 @@ function MentorPage() {
 
   const send = async (text: string) => {
     const trimmed = text.trim();
-    if (!trimmed || thinking) return;
+    if (!trimmed || thinking || !AI_ENABLED) return;
     actions.addChatMessage({ role: "user", content: trimmed });
     setInput("");
     setThinking(true);
@@ -173,8 +175,9 @@ function MentorPage() {
 
       <Card className="flex min-h-0 flex-1 flex-col border-border/60 shadow-[var(--shadow-soft)]">
         <CardContent className="flex min-h-0 flex-1 flex-col gap-4 p-0">
+          {!AI_ENABLED && <AiUnavailable className="m-4 mb-0" />}
           <div ref={scrollRef} className="min-h-0 flex-1 space-y-4 overflow-y-auto p-6">
-            {chat.length === 0 && (
+            {chat.length === 0 && AI_ENABLED && (
               <div className="mx-auto max-w-lg py-8 text-center">
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                   <Bot className="h-6 w-6" />
@@ -217,17 +220,19 @@ function MentorPage() {
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask your mentor anything…"
+                placeholder={AI_ENABLED ? "Ask your mentor anything…" : "AI mentor is unavailable in local development"}
                 className="flex-1"
-                disabled={thinking}
+                disabled={thinking || !AI_ENABLED}
               />
-              <Button type="submit" size="icon" disabled={!input.trim() || thinking}>
+              <Button type="submit" size="icon" disabled={!input.trim() || thinking || !AI_ENABLED}>
                 <Send className="h-4 w-4" />
               </Button>
             </form>
-            <p className="mt-2 text-[11px] text-muted-foreground">
-              Uses your live Eleva data plus general knowledge. Powered by Lovable AI (Gemini 3.6 Flash).
-            </p>
+            {AI_ENABLED && (
+              <p className="mt-2 text-[11px] text-muted-foreground">
+                Uses your live Eleva data plus general knowledge. Powered by Lovable AI (Gemini 3.6 Flash).
+              </p>
+            )}
           </div>
         </CardContent>
       </Card>
