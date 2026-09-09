@@ -25,11 +25,7 @@ const ACCENT_VALUES: Record<Accent, string> = {
 
 function applyMode(mode: ThemeMode) {
   if (typeof document === "undefined") return;
-  const prefersDark =
-    typeof window !== "undefined" &&
-    window.matchMedia?.("(prefers-color-scheme: dark)").matches;
-  const dark = mode === "dark" || (mode === "system" && prefersDark);
-  document.documentElement.classList.toggle("dark", dark);
+  document.documentElement.classList.remove("dark");
 }
 
 function applyAccent(accent: Accent) {
@@ -41,23 +37,15 @@ function applyAccent(accent: Accent) {
 }
 
 export function useTheme() {
-  const [mode, setModeState] = useState<ThemeMode>("system");
+  const [mode, setModeState] = useState<ThemeMode>("light");
   const [accent, setAccentState] = useState<Accent>("blue");
 
   useEffect(() => {
-    const storedMode = (localStorage.getItem(MODE_KEY) as ThemeMode | null) ?? "system";
     const storedAccent = (localStorage.getItem(ACCENT_KEY) as Accent | null) ?? "blue";
-    setModeState(storedMode);
     setAccentState(storedAccent);
-    applyMode(storedMode);
+    applyMode("light");
     applyAccent(storedAccent);
 
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = () => {
-      if ((localStorage.getItem(MODE_KEY) as ThemeMode | null) === "system") applyMode("system");
-    };
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
   }, []);
 
   const setMode = useCallback((next: ThemeMode) => {

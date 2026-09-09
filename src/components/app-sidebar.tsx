@@ -164,14 +164,7 @@ export function AppSidebar() {
               {user ? "Signed in" : "Not signed in"}
             </span>
           </div>
-          <button
-            type="button"
-            aria-label="Toggle theme"
-            onClick={() => setMode(mode === "dark" ? "light" : "dark")}
-            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors duration-200 hover:bg-sidebar-accent hover:text-foreground group-data-[collapsible=icon]:hidden"
-          >
-            {mode === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </button>
+
         </div>
         <div className="px-2 pb-1 group-data-[collapsible=icon]:hidden">
           <SocialLinks size="sm" />

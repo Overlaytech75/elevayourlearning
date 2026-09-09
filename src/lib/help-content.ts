@@ -98,14 +98,7 @@ export const HELP_TOPICS: HelpTopic[] = [
     related: ["saving"],
     keywords: ["log out", "leave"],
   },
-  {
-    id: "theme",
-    group: "Look & feel",
-    question: "Can I use dark mode or change the accent colour?",
-    answer:
-      "Yes. The sun/moon button in the sidebar footer switches between light and dark instantly, and your choice is remembered.\n\nAccent colours follow the app theme, so charts, badges and buttons all stay consistent.",
-    keywords: ["dark", "light", "colour", "color", "theme"],
-  },
+
   {
     id: "ai-mentor",
     group: "AI",
