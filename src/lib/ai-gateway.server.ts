@@ -25,7 +25,7 @@ function createCustomProvider(baseURL: string, apiKey: string) {
 export const AI_UNAVAILABLE_REPLY =
   "AI features are unavailable in this environment — no AI provider is configured. Everything else in Eleva works normally.";
 
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
+
 
 /**
  * Resolves an AI provider from the environment, or `null` when none is
@@ -47,13 +47,7 @@ export function resolveAiProvider(): {
   const baseURL = process.env['AI_GATEWAY_URL'];
   const fallbackModel = process.env['AI_MODEL'] || "gemini-3.6-flash";
 
-  // Native Gemini support (no base URL hacking needed)
-  if (apiKey && (!baseURL || fallbackModel.includes('gemini') || baseURL.includes('google'))) {
-    const google = createGoogleGenerativeAI({ apiKey });
-    return { model: () => google(fallbackModel.replace('google/', '')) };
-  }
-
-  // Custom OpenAI compatible endpoint (e.g. Groq, local Ollama)
+  // Custom OpenAI compatible endpoint (e.g. Groq, local Ollama, Gemini OpenAI)
   if (baseURL && apiKey) {
     const provider = createCustomProvider(baseURL, apiKey);
     return { model: () => provider(fallbackModel) };
