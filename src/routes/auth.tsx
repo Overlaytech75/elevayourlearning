@@ -11,7 +11,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { useAuth } from "@/lib/auth";
 import { startPreview } from "@/components/preview-gate";
-import { SocialLinks } from "@/components/social-links";
 import { GOOGLE_AUTH_ENABLED } from "@/lib/env";
 import elevaMark from "@/assets/eleva-mark.png.asset.json";
 
@@ -123,7 +122,6 @@ function AuthPage() {
           <p className="text-xs text-muted-foreground">
             Built for students juggling deadlines, shifts and visas.
           </p>
-          <SocialLinks size="sm" />
         </div>
 
       </aside>
@@ -222,9 +220,6 @@ function AuthPage() {
             </Link>
           </p>
 
-          <div className="mt-5 flex justify-center lg:hidden">
-            <SocialLinks size="sm" />
-          </div>
         </div>
 
       </main>
