@@ -88,12 +88,8 @@ export function AppSidebar() {
           <img
             src="/logo.png"
             alt="Eleva logo"
-            className="h-8 w-8 shrink-0 object-contain"
+            className="h-12 w-auto shrink-0 object-contain"
           />
-          <div className="grid text-left leading-tight group-data-[collapsible=icon]:hidden">
-            <span className="font-display text-sm font-semibold tracking-tight">Eleva</span>
-            <span className="text-[11px] text-muted-foreground">Your learning, elevated</span>
-          </div>
         </div>
 
       </SidebarHeader>

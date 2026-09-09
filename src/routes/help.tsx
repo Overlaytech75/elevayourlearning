@@ -109,7 +109,7 @@ function HelpPage() {
         {/* Chatbot */}
         <Card className="lg:col-span-3 border-border/60 shadow-[var(--shadow-soft)]">
           <CardHeader className="flex-row items-center gap-3 space-y-0">
-            <img src="/logo.png" alt="" className="h-8 w-8 object-contain" />
+            <img src="/logo.png" alt="" className="h-10 w-auto object-contain" />
             <div>
               <CardTitle className="font-display text-base">Eleva Helper</CardTitle>
               <p className="text-xs text-muted-foreground">Prefilled answers · always online</p>

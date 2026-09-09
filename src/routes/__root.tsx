@@ -193,8 +193,7 @@ function AppShell({ pathname }: { pathname: string }) {
             <SidebarTrigger className="text-muted-foreground transition-colors duration-200 hover:text-foreground" />
 
             <div className="ml-1 flex min-w-0 flex-1 items-center gap-2 truncate text-sm text-muted-foreground">
-              <img src="/logo.png" alt="Eleva logo" className="h-6 w-6 shrink-0 object-contain" />
-              <span className="font-display font-medium text-foreground">Eleva</span>
+              <img src="/logo.png" alt="Eleva logo" className="h-8 w-auto shrink-0 object-contain" />
               <span className="text-muted-foreground/60">/</span>
               <span className="truncate">{sectionLabel(pathname)}</span>
             </div>
