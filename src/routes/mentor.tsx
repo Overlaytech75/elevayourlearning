@@ -162,7 +162,7 @@ function MentorPage() {
             <span className="flex h-6 w-6 items-center justify-center rounded-md bg-primary/10 text-primary">
               <Sparkles className="h-3.5 w-3.5" />
             </span>
-            <p className="text-sm text-muted-foreground">Personal coach · powered by Lovable AI</p>
+            <p className="text-sm text-muted-foreground">Personal coach · Eleva Intelligence</p>
           </div>
           <h1 className="font-display text-3xl font-semibold tracking-wider sm:text-4xl">AI Mentor</h1>
         </div>
@@ -230,7 +230,7 @@ function MentorPage() {
             </form>
             {AI_ENABLED && (
               <p className="mt-2 text-[11px] text-muted-foreground">
-                Uses your live Eleva data plus general knowledge. Powered by Lovable AI (Gemini 3.6 Flash).
+                Uses your live Eleva data plus general knowledge.
               </p>
             )}
           </div>
