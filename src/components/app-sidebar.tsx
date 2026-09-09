@@ -38,10 +38,6 @@ import { useTheme } from "@/lib/theme";
 import { useAuth, displayNameOf, signOut } from "@/lib/auth";
 import { clearLocalData } from "@/lib/local-reset";
 import { SocialLinks } from "@/components/social-links";
-import elevaMark from "@/assets/eleva-mark.png.asset.json";
-
-
-
 const primary = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Academics", url: "/academics", icon: GraduationCap },
@@ -90,7 +86,7 @@ export function AppSidebar() {
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-2">
           <img
-            src={elevaMark.url}
+            src="/logo.png"
             alt="Eleva logo"
             className="h-8 w-8 shrink-0 object-contain"
           />

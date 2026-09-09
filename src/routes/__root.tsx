@@ -19,8 +19,6 @@ import { NotificationBell } from "@/components/notification-bell";
 import { Toaster } from "@/components/ui/sonner";
 import { PreviewGate } from "@/components/preview-gate";
 import { useAuth } from "@/lib/auth";
-import elevaMark from "@/assets/eleva-mark.png.asset.json";
-
 
 
 function NotFoundComponent() {
@@ -195,7 +193,7 @@ function AppShell({ pathname }: { pathname: string }) {
             <SidebarTrigger className="text-muted-foreground transition-colors duration-200 hover:text-foreground" />
 
             <div className="ml-1 flex min-w-0 flex-1 items-center gap-2 truncate text-sm text-muted-foreground">
-              <img src={elevaMark.url} alt="Eleva logo" className="h-6 w-6 shrink-0 object-contain" />
+              <img src="/logo.png" alt="Eleva logo" className="h-6 w-6 shrink-0 object-contain" />
               <span className="font-display font-medium text-foreground">Eleva</span>
               <span className="text-muted-foreground/60">/</span>
               <span className="truncate">{sectionLabel(pathname)}</span>

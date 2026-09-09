@@ -12,8 +12,6 @@ import { lovable } from "@/integrations/lovable/index";
 import { useAuth } from "@/lib/auth";
 import { startPreview } from "@/components/preview-gate";
 import { GOOGLE_AUTH_ENABLED } from "@/lib/env";
-import elevaMark from "@/assets/eleva-mark.png.asset.json";
-
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -90,7 +88,7 @@ function AuthPage() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--primary)_28%,transparent),transparent_60%)]" />
         <div className="relative">
           <div className="flex items-center gap-3">
-            <img src={elevaMark.url} alt="Eleva logo" className="h-10 w-10 object-contain" />
+            <img src="/logo.png" alt="Eleva logo" className="h-10 w-10 object-contain" />
             <span className="font-display text-xl font-semibold tracking-tight">Eleva</span>
           </div>
 
@@ -130,7 +128,7 @@ function AuthPage() {
       <main className="flex items-center justify-center px-4 py-12 sm:px-8">
         <div className="w-full max-w-sm">
           <div className="mb-8 text-center lg:hidden">
-            <img src={elevaMark.url} alt="Eleva logo" className="mx-auto h-14 w-14 object-contain" />
+            <img src="/logo.png" alt="Eleva logo" className="mx-auto h-14 w-14 object-contain" />
 
             <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight">Eleva</h1>
             <p className="mt-1 text-sm text-muted-foreground">
