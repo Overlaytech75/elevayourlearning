@@ -12,7 +12,7 @@ const MessageSchema = z.object({
 });
 
 const AskInput = z.object({
-  messages: z.array(MessageSchema).min(1).max(40),
+  messages: z.array(MessageSchema).min(1).max(200),
   context: z.object({
     userName: z.string().default("there"),
     today: z.string(),
