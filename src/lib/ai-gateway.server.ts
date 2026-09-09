@@ -40,12 +40,12 @@ export function resolveAiProvider(): {
   const lovableKey = process.env['LOVABLE_API_KEY'];
   if (lovableKey) {
     const gateway = createLovableAiGatewayProvider(lovableKey);
-    return { model: (id) => gateway(id || "google/gemini-1.5-flash") };
+    return { model: (id) => gateway(id || "google/gemini-3.6-flash") };
   }
 
   const apiKey = process.env['AI_API_KEY'] || process.env['GEMINI_API_KEY'];
   const baseURL = process.env['AI_GATEWAY_URL'];
-  const fallbackModel = process.env['AI_MODEL'] || "gemini-1.5-flash";
+  const fallbackModel = process.env['AI_MODEL'] || "gemini-3.6-flash";
 
   // Native Gemini support (no base URL hacking needed)
   if (apiKey && (!baseURL || fallbackModel.includes('gemini') || baseURL.includes('google'))) {
