@@ -88,9 +88,9 @@ export function AppSidebar() {
           <img
             src="/logo.png"
             alt="Eleva logo"
-            className="h-8 w-8 shrink-0 object-contain"
+            className="h-14 w-14 shrink-0 object-contain"
           />
-          <span className="font-display text-lg font-bold">Eleva</span>
+          <span className="font-display text-3xl font-bold tracking-widest">Eleva</span>
         </div>
 
       </SidebarHeader>

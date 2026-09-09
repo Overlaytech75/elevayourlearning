@@ -87,9 +87,9 @@ function AuthPage() {
       <aside className="relative hidden overflow-hidden bg-[var(--gradient-brand)] p-12 lg:flex lg:flex-col lg:justify-between">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--primary)_28%,transparent),transparent_60%)]" />
         <div className="relative">
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Eleva logo" className="h-12 w-12 object-contain" />
-            <span className="font-display text-4xl font-bold">Eleva</span>
+          <div className="flex items-center gap-4">
+            <img src="/logo.png" alt="Eleva logo" className="h-20 w-20 object-contain shadow-[var(--shadow-soft)]" />
+            <span className="font-display text-6xl font-bold tracking-widest text-foreground">Eleva</span>
           </div>
 
 
@@ -128,9 +128,9 @@ function AuthPage() {
       <main className="flex items-center justify-center px-4 py-12 sm:px-8">
         <div className="w-full max-w-sm">
           <div className="mb-8 flex flex-col items-center text-center lg:hidden">
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Eleva logo" className="h-10 w-10 object-contain" />
-              <span className="font-display text-3xl font-bold">Eleva</span>
+            <div className="flex items-center gap-3">
+              <img src="/logo.png" alt="Eleva logo" className="h-16 w-16 object-contain" />
+              <span className="font-display text-5xl font-bold tracking-widest text-foreground">Eleva</span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
               Your degree, money and paperwork in one calm place.

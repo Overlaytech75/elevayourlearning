@@ -108,10 +108,12 @@ function HelpPage() {
       <div className="grid gap-6 lg:grid-cols-5">
         {/* Chatbot */}
         <Card className="lg:col-span-3 border-border/60 shadow-[var(--shadow-soft)]">
-          <CardHeader className="flex-row items-center gap-3 space-y-0">
-            <img src="/logo.png" alt="" className="h-10 w-10 object-contain" />
+          <CardHeader className="flex-row items-center gap-4 space-y-0 pb-4">
+            <div className="flex shrink-0 items-center gap-2">
+              <img src="/logo.png" alt="" className="h-12 w-12 object-contain" />
+            </div>
             <div>
-              <CardTitle className="font-display text-base">Eleva Helper</CardTitle>
+              <CardTitle className="font-display text-2xl tracking-widest">Eleva Helper</CardTitle>
               <p className="text-xs text-muted-foreground">Prefilled answers · always online</p>
             </div>
           </CardHeader>
