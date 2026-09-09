@@ -55,7 +55,7 @@ function GoalsPage() {
       <div className="mb-8 flex items-end justify-between gap-4">
         <div>
           <p className="text-sm text-muted-foreground">Direction</p>
-          <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">Goals</h1>
+          <h1 className="mt-1 font-display text-3xl font-semibold tracking-wider sm:text-4xl">Goals</h1>
           <p className="mt-2 max-w-2xl text-muted-foreground">Your compass, quantified.</p>
         </div>
         <GoalDialog open={open} onOpenChange={setOpen} />

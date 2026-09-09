@@ -92,7 +92,7 @@ function AuthPage() {
           </div>
 
 
-          <h1 className="mt-14 max-w-md font-display text-4xl font-semibold leading-tight tracking-tight">
+          <h1 className="mt-14 max-w-md font-display text-4xl font-semibold leading-tight tracking-wider">
             The calm operating system for student life.
           </h1>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
@@ -102,7 +102,7 @@ function AuthPage() {
 
           <ul className="mt-10 max-w-md space-y-4">
             {VALUE_POINTS.map((v) => (
-              <li key={v.title} className="flex gap-3 rounded-xl border border-border/60 bg-card/70 p-4 backdrop-blur-sm transition-all duration-200 hover:shadow-[var(--shadow-soft)]">
+              <li key={v.title} className="flex gap-3 rounded-xl border border-border/60 bg-card text-card-foreground/70 p-4 backdrop-blur-sm transition-all duration-200 hover:shadow-[var(--shadow-soft)]">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <v.icon className="h-4.5 w-4.5" />
                 </div>
@@ -133,8 +133,8 @@ function AuthPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-[var(--shadow-elevated)]">
-            <h2 className="font-display text-lg font-semibold tracking-tight">Get started</h2>
+          <div className="rounded-2xl border border-border/60 bg-card text-card-foreground p-6 shadow-[var(--shadow-elevated)]">
+            <h2 className="font-display text-lg font-semibold tracking-wider">Get started</h2>
             <p className="mt-1 text-sm text-muted-foreground">Free, and takes under a minute.</p>
 
             <Button variant="outline" className="mt-5 w-full transition-all duration-200 flex items-center justify-center gap-2" onClick={google}>

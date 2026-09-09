@@ -93,10 +93,10 @@ function HelpPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <header className="mb-8">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
+        <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background text-foreground/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
           <LifeBuoy className="h-3.5 w-3.5" /> Help centre
         </span>
-        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="mt-4 font-display text-3xl font-semibold tracking-wider sm:text-4xl">
           How can we help?
         </h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
@@ -118,7 +118,7 @@ function HelpPage() {
           <CardContent>
             <div
               ref={scrollRef}
-              className="max-h-[420px] space-y-4 overflow-y-auto rounded-xl border border-border/50 bg-background/40 p-4"
+              className="max-h-[420px] space-y-4 overflow-y-auto rounded-xl border border-border/50 bg-background text-foreground/40 p-4"
             >
               {messages.map((m) =>
                 m.role === "user" ? (
@@ -159,7 +159,7 @@ function HelpPage() {
                       key={id}
                       type="button"
                       onClick={() => ask(id)}
-                      className="rounded-full border border-border/60 bg-background/60 px-3 py-1.5 text-xs text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+                      className="rounded-full border border-border/60 bg-background text-foreground/60 px-3 py-1.5 text-xs text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
                     >
                       {t.question}
                     </button>
@@ -179,7 +179,7 @@ function HelpPage() {
           <CardContent className="space-y-5">
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
-              className="flex items-center gap-3 rounded-xl border border-border/60 bg-background/50 p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40"
+              className="flex items-center gap-3 rounded-xl border border-border/60 bg-background text-foreground/50 p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40"
             >
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <Mail className="h-4 w-4" />
@@ -209,7 +209,7 @@ function HelpPage() {
       <section className="mt-10">
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="font-display text-xl font-semibold tracking-tight">All answers</h2>
+            <h2 className="font-display text-xl font-semibold tracking-wider">All answers</h2>
             <p className="text-sm text-muted-foreground">{HELP_TOPICS.length} topics</p>
           </div>
           <div className="relative sm:w-72">

@@ -53,7 +53,7 @@ function Timeline() {
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <header className="mb-8">
         <p className="text-sm text-muted-foreground">The road ahead</p>
-        <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight">Timeline</h1>
+        <h1 className="mt-1 font-display text-3xl font-semibold tracking-wider">Timeline</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
           Every deadline, grouped by how much runway you have left.
         </p>
@@ -68,11 +68,11 @@ function Timeline() {
             <section key={b.key} className="relative pl-10 sm:pl-14">
               <span
                 aria-hidden
-                className="absolute left-2.5 top-1.5 flex h-3 w-3 -translate-x-1/2 items-center justify-center rounded-full bg-background ring-2 ring-primary sm:left-6"
+                className="absolute left-2.5 top-1.5 flex h-3 w-3 -translate-x-1/2 items-center justify-center rounded-full bg-background text-foreground ring-2 ring-primary sm:left-6"
               />
               <div className="mb-3 flex items-baseline justify-between">
                 <div>
-                  <h2 className="font-display text-lg font-semibold tracking-tight">{b.label}</h2>
+                  <h2 className="font-display text-lg font-semibold tracking-wider">{b.label}</h2>
                   <p className="text-xs text-muted-foreground">{b.description}</p>
                 </div>
                 <span className="text-xs tabular-nums text-muted-foreground">

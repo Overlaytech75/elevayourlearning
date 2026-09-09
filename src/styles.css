@@ -192,7 +192,8 @@
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
-    letter-spacing: 0.05em;
+    font-weight: 400 !important;
+    letter-spacing: 0.1em !important;
     text-transform: uppercase;
   }
 
@@ -238,6 +239,8 @@
 
 @utility font-display {
   font-family: var(--font-display);
+  font-weight: 400 !important;
+  letter-spacing: 0.1em !important;
 }
 
 @utility glass {

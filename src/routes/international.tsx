@@ -118,7 +118,7 @@ function InternationalHub() {
         <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
           <Globe2 className="h-3.5 w-3.5" /> International
         </div>
-        <h1 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+        <h1 className="font-display text-2xl font-semibold tracking-wider sm:text-3xl">
           International Student Hub
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">

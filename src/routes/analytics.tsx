@@ -103,7 +103,7 @@ function AnalyticsPage() {
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-8">
         <p className="text-sm text-muted-foreground">Insights</p>
-        <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">Analytics</h1>
+        <h1 className="mt-1 font-display text-3xl font-semibold tracking-wider sm:text-4xl">Analytics</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">A quiet look at where your energy actually goes.</p>
       </div>
 
@@ -228,7 +228,7 @@ function Stat({ label, value, hint, icon }: { label: string; value: string; hint
           <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</span>
           <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 text-primary">{icon}</span>
         </div>
-        <p className="mt-3 font-display text-3xl font-semibold tracking-tight">{value}</p>
+        <p className="mt-3 font-display text-3xl font-semibold tracking-wider">{value}</p>
         {hint && <p className="mt-1 text-xs text-muted-foreground">{hint}</p>}
       </CardContent>
     </Card>

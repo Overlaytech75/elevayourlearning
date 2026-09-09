@@ -34,7 +34,7 @@ export function SocialLinks({
             title={s.label}
             className={cn(
               box,
-              "flex shrink-0 items-center justify-center rounded-full border border-border/60 bg-background/60 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary",
+              "flex shrink-0 items-center justify-center rounded-full border border-border/60 bg-background text-foreground/60 text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary",
             )}
           >
             <Icon className={icon} />

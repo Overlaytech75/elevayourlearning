@@ -67,7 +67,7 @@ function FinancePage() {
       <div className="mb-8 flex items-end justify-between gap-4">
         <div>
           <p className="text-sm text-muted-foreground">This month</p>
-          <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">Finance</h1>
+          <h1 className="mt-1 font-display text-3xl font-semibold tracking-wider sm:text-4xl">Finance</h1>
           <p className="mt-2 max-w-2xl text-muted-foreground">Cash flow, budgets, and where the money's going.</p>
         </div>
         <TxnDialog open={open} onOpenChange={setOpen} />
@@ -173,7 +173,7 @@ function MoneyCard({ label, value, tone, icon }: { label: string; value: number;
           <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</span>
           <span className={`flex h-7 w-7 items-center justify-center rounded-md ${toneClass}`}>{icon}</span>
         </div>
-        <p className="mt-3 font-display text-3xl font-semibold tracking-tight tabular-nums">
+        <p className="mt-3 font-display text-3xl font-semibold tracking-wider tabular-nums">
           {value < 0 ? "-" : ""}${Math.abs(value).toFixed(2)}
         </p>
       </CardContent>

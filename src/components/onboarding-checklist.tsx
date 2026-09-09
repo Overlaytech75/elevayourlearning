@@ -99,7 +99,7 @@ export function OnboardingChecklist() {
             <Link
               key={s.id}
               to={s.to as "/"}
-              className={`group flex items-center gap-3 rounded-xl border border-border/60 bg-background/50 p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 ${
+              className={`group flex items-center gap-3 rounded-xl border border-border/60 bg-background text-foreground/50 p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 ${
                 s.done ? "opacity-60" : ""
               }`}
             >

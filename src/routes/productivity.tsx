@@ -79,7 +79,7 @@ function ProductivityPage() {
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-8">
         <p className="text-sm text-muted-foreground">Focus workspace</p>
-        <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight sm:text-4xl">Productivity</h1>
+        <h1 className="mt-1 font-display text-3xl font-semibold tracking-wider sm:text-4xl">Productivity</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">Tasks to ship today and habits to compound.</p>
       </div>
 

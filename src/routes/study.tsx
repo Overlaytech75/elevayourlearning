@@ -59,7 +59,7 @@ function StudyPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <header className="mb-6">
-        <h1 className="font-display text-3xl font-semibold tracking-tight">Study tools</h1>
+        <h1 className="font-display text-3xl font-semibold tracking-wider">Study tools</h1>
         <p className="mt-1 text-muted-foreground">Focus, measure, and drill — without leaving Eleva.</p>
       </header>
 
@@ -166,7 +166,7 @@ function Pomodoro() {
               />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="font-display text-6xl font-semibold tabular-nums tracking-tight">
+              <span className="font-display text-6xl font-semibold tabular-nums tracking-wider">
                 {mm}:{ss}
               </span>
               <span className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">

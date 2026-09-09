@@ -164,7 +164,7 @@ function MentorPage() {
             </span>
             <p className="text-sm text-muted-foreground">Personal coach · powered by Lovable AI</p>
           </div>
-          <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">AI Mentor</h1>
+          <h1 className="font-display text-3xl font-semibold tracking-wider sm:text-4xl">AI Mentor</h1>
         </div>
         {chat.length > 0 && (
           <Button variant="ghost" size="sm" onClick={() => actions.clearChat()} className="gap-1.5 text-muted-foreground">
@@ -192,7 +192,7 @@ function MentorPage() {
                     <button
                       key={s}
                       onClick={() => send(s)}
-                      className="rounded-full border border-border/60 bg-background px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-accent"
+                      className="rounded-full border border-border/60 bg-background text-foreground px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-accent"
                     >
                       {s}
                     </button>
@@ -253,7 +253,7 @@ function Message({ m }: { m: ChatMessage }) {
         {isUser ? (
           <p className="whitespace-pre-wrap">{m.content}</p>
         ) : (
-          <div className="prose prose-sm max-w-none dark:prose-invert prose-p:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-0.5 prose-headings:mt-3 prose-headings:mb-1 prose-code:before:content-none prose-code:after:content-none prose-code:rounded prose-code:bg-background/70 prose-code:px-1 prose-code:py-0.5">
+          <div className="prose prose-sm max-w-none dark:prose-invert prose-p:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-0.5 prose-headings:mt-3 prose-headings:mb-1 prose-code:before:content-none prose-code:after:content-none prose-code:rounded prose-code:bg-background text-foreground/70 prose-code:px-1 prose-code:py-0.5">
             <ReactMarkdown>{m.content}</ReactMarkdown>
           </div>
         )}

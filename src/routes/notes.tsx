@@ -40,7 +40,7 @@ function NotesPage() {
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <header className="mb-6 flex items-center justify-between gap-4">
         <div>
-          <h1 className="font-display text-3xl font-semibold tracking-tight">Notes</h1>
+          <h1 className="font-display text-3xl font-semibold tracking-wider">Notes</h1>
           <p className="mt-1 text-muted-foreground">Markdown in, clean revision material out. Saves as you type.</p>
         </div>
         <Button className="gap-1.5" onClick={create}>

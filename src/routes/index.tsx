@@ -145,7 +145,7 @@ function Dashboard() {
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       {/* Hero */}
       <section className="mb-8 animate-in fade-in slide-in-from-bottom-2 duration-500">
-        <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-elevated)] sm:p-8">
+        <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-card text-card-foreground p-6 shadow-[var(--shadow-elevated)] sm:p-8">
           {/* Decorative glows */}
           <div
             aria-hidden
@@ -170,11 +170,11 @@ function Dashboard() {
 
           <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="min-w-0">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background text-foreground/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                 {today}
               </span>
-              <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+              <h1 className="mt-4 font-display text-4xl font-semibold tracking-wider sm:text-5xl">
                 {greeting},{" "}
                 <span
                   className="bg-gradient-to-r from-primary via-chart-4 to-chart-3 bg-clip-text text-transparent"
@@ -195,7 +195,7 @@ function Dashboard() {
             {nextUp && (
               <Link
                 to="/academics"
-                className="group relative flex min-w-[240px] shrink-0 items-center justify-between gap-4 rounded-2xl border border-border/60 bg-background/70 p-4 backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
+                className="group relative flex min-w-[240px] shrink-0 items-center justify-between gap-4 rounded-2xl border border-border/60 bg-background text-foreground/70 p-4 backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-soft)]"
               >
                 <div className="min-w-0">
                   <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">Next up</p>
@@ -398,7 +398,7 @@ function StatCard({
           <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</span>
           <span className={`flex h-7 w-7 items-center justify-center rounded-md ${toneClass}`}>{icon}</span>
         </div>
-        <p className="mt-3 font-display text-3xl font-semibold tracking-tight">{value}</p>
+        <p className="mt-3 font-display text-3xl font-semibold tracking-wider">{value}</p>
         {hint && <p className="mt-1 text-xs text-muted-foreground">{hint}</p>}
       </CardContent>
     </Card>
@@ -441,7 +441,7 @@ function FocusTile({
 }: { icon: React.ReactNode; label: string; value: string; tone?: "default" | "warning" }) {
   const toneClass = tone === "warning" ? "bg-warning/10 text-warning" : "bg-primary/10 text-primary";
   return (
-    <div className="rounded-xl border border-border/60 bg-card p-3">
+    <div className="rounded-xl border border-border/60 bg-card text-card-foreground p-3">
       <span className={`inline-flex h-6 w-6 items-center justify-center rounded-md ${toneClass}`}>{icon}</span>
       <p className="mt-2 font-display text-lg font-semibold tabular-nums">{value}</p>
       <p className="text-[11px] uppercase tracking-wide text-muted-foreground">{label}</p>

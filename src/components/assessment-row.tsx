@@ -34,7 +34,7 @@ export function AssessmentRow({
     <button
       type="button"
       onClick={onClick}
-      className="group w-full rounded-xl border border-border/60 bg-card px-4 py-3 text-left transition hover:border-border hover:shadow-[var(--shadow-soft)]"
+      className="group w-full rounded-xl border border-border/60 bg-card text-card-foreground px-4 py-3 text-left transition hover:border-border hover:shadow-[var(--shadow-soft)]"
     >
       <div className="flex items-start gap-3">
         <span

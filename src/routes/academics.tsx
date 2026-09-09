@@ -76,7 +76,7 @@ function Academics() {
       <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-sm text-muted-foreground">Academic workspace</p>
-          <h1 className="mt-1 font-display text-3xl font-semibold tracking-tight">Academics</h1>
+          <h1 className="mt-1 font-display text-3xl font-semibold tracking-wider">Academics</h1>
           <p className="mt-2 max-w-xl text-muted-foreground">
             Semesters, courses, and assessments — organized the way your mind actually works.
           </p>

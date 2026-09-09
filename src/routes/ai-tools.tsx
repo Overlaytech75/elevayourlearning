@@ -96,7 +96,7 @@ function AiToolsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <header className="mb-6">
-        <h1 className="font-display text-3xl font-semibold tracking-tight">AI study tools</h1>
+        <h1 className="font-display text-3xl font-semibold tracking-wider">AI study tools</h1>
         <p className="mt-1 text-muted-foreground">
           Seven focused assistants for the parts of studying that eat your evenings.
         </p>

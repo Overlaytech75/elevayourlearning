@@ -85,12 +85,12 @@ export function PreviewGate({ children }: { children: React.ReactNode }) {
       {children}
 
       {expired && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-sm rounded-2xl border border-border/60 bg-card p-6 text-center shadow-[var(--shadow-elevated)]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background text-foreground/80 p-4 backdrop-blur-sm">
+          <div className="w-full max-w-sm rounded-2xl border border-border/60 bg-card text-card-foreground p-6 text-center shadow-[var(--shadow-elevated)]">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
               <Sparkles className="h-6 w-6" />
             </div>
-            <h2 className="mt-4 font-display text-xl font-semibold tracking-tight">
+            <h2 className="mt-4 font-display text-xl font-semibold tracking-wider">
               Your 5-minute look around is up
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
