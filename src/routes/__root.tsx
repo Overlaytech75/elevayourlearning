@@ -207,7 +207,9 @@ function AppShell({ pathname }: { pathname: string }) {
               <Outlet />
             </PreviewGate>
           </main>
-
+          <footer className="w-full py-4 text-center text-sm text-muted-foreground/60 border-t border-border/40 font-medium">
+            Eleva is a project of Overlay tech developed and founded by Sakif Khandaker
+          </footer>
         </div>
       </div>
       <Toaster />
