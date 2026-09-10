@@ -76,7 +76,7 @@ export function AppSidebar() {
   const handleSignOut = async () => {
     if (isMobile) setOpenMobile(false);
     await signOut();
-    clearLocalData();
+    // clearLocalData(); // Disabled to prevent users from losing their data on logout until cloud sync is implemented
     window.location.replace("/auth");
   };
 
