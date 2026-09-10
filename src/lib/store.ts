@@ -218,8 +218,10 @@ export const actions = {
     persist();
   },
   addSemester(partial: Omit<Semester, "id">) {
-    ensure().semesters.push({ ...partial, id: uid() });
+    const id = uid();
+    ensure().semesters.push({ ...partial, id });
     persist();
+    return id;
   },
   addCourse(partial: Omit<Course, "id">) {
     ensure().courses.push({ ...partial, id: uid() });

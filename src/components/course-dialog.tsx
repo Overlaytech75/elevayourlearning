@@ -22,8 +22,8 @@ export function CourseDialog({
   semesters: Semester[];
   defaultSemesterId?: string;
 }) {
-  const [form, setForm] = useState<Omit<Course, "id">>({
-    semesterId: defaultSemesterId ?? semesters[0]?.id ?? "",
+  const [semesterName, setSemesterName] = useState("");
+  const [form, setForm] = useState<Omit<Course, "id" | "semesterId">>({
     code: "",
     name: "",
     color: palette[0],
@@ -32,8 +32,9 @@ export function CourseDialog({
 
   useEffect(() => {
     if (open) {
+      const defaultName = defaultSemesterId ? semesters.find(s => s.id === defaultSemesterId)?.name : semesters[0]?.name;
+      setSemesterName(defaultName ?? "");
       setForm({
-        semesterId: defaultSemesterId ?? semesters[0]?.id ?? "",
         code: "", name: "", color: palette[Math.floor(Math.random() * palette.length)], credits: 6,
       });
     }
@@ -46,12 +47,15 @@ export function CourseDialog({
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="grid gap-2 sm:col-span-2">
             <Label>Semester</Label>
-            <Select value={form.semesterId} onValueChange={(v) => setForm({ ...form, semesterId: v })}>
-              <SelectTrigger><SelectValue /></SelectTrigger>
-              <SelectContent>
-                {semesters.map((s) => (<SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>))}
-              </SelectContent>
-            </Select>
+            <Input 
+              list="semesters-list" 
+              value={semesterName} 
+              onChange={(e) => setSemesterName(e.target.value)} 
+              placeholder="e.g. Fall 2026" 
+            />
+            <datalist id="semesters-list">
+              {semesters.map((s) => (<option key={s.id} value={s.name} />))}
+            </datalist>
           </div>
           <div className="grid gap-2">
             <Label>Code</Label>
@@ -86,10 +90,22 @@ export function CourseDialog({
           <Button variant="outline" onClick={() => onOpenChange(false)}>Cancel</Button>
           <Button
             onClick={() => {
-              actions.addCourse(form);
+              const name = semesterName.trim();
+              let targetSemesterId = semesters.find(s => s.name.toLowerCase() === name.toLowerCase())?.id;
+              
+              if (!targetSemesterId) {
+                targetSemesterId = actions.addSemester({
+                  name,
+                  startDate: new Date().toISOString(),
+                  endDate: new Date().toISOString(),
+                  active: true,
+                });
+              }
+
+              actions.addCourse({ ...form, semesterId: targetSemesterId });
               onOpenChange(false);
             }}
-            disabled={!form.code || !form.name || !form.semesterId}
+            disabled={!form.code || !form.name || !semesterName.trim()}
           >
             Create
           </Button>
