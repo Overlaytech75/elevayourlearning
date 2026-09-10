@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { useAuth } from "@/lib/auth";
-import { startPreview } from "@/components/preview-gate";
+import { startPreview, readPreviewStart, PREVIEW_MS } from "@/components/preview-gate";
 import { GOOGLE_AUTH_ENABLED } from "@/lib/env";
 
 export const Route = createFileRoute("/auth")({
@@ -40,10 +40,18 @@ function AuthPage() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
+  const [tourExpired, setTourExpired] = useState(false);
 
   useEffect(() => {
     if (!loading && user) navigate({ to: "/", replace: true });
   }, [loading, user, navigate]);
+
+  useEffect(() => {
+    const start = readPreviewStart();
+    if (start !== null && Date.now() - start >= PREVIEW_MS) {
+      setTourExpired(true);
+    }
+  }, []);
 
   const signIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -198,19 +206,21 @@ function AuthPage() {
             </Tabs>
           </div>
 
-          <p className="mt-5 text-center text-xs text-muted-foreground">
-            Prefer to look around first?{" "}
-            <button
-              type="button"
-              onClick={() => {
-                startPreview();
-                navigate({ to: "/" });
-              }}
-              className="font-medium text-primary underline-offset-4 transition-colors duration-200 hover:underline"
-            >
-              Take a 5-minute tour
-            </button>
-          </p>
+          {!tourExpired && (
+            <p className="mt-5 text-center text-xs text-muted-foreground">
+              Prefer to look around first?{" "}
+              <button
+                type="button"
+                onClick={() => {
+                  startPreview();
+                  navigate({ to: "/" });
+                }}
+                className="font-medium text-primary underline-offset-4 transition-colors duration-200 hover:underline"
+              >
+                Take a 5-minute tour
+              </button>
+            </p>
+          )}
 
           <p className="mt-3 text-center text-xs text-muted-foreground">
             Need a hand?{" "}

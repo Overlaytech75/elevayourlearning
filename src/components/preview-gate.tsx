@@ -13,7 +13,7 @@ export function startPreview() {
   window.sessionStorage.setItem(PREVIEW_KEY, String(Date.now()));
 }
 
-function readPreviewStart(): number | null {
+export function readPreviewStart(): number | null {
   if (typeof window === "undefined") return null;
   const raw = window.sessionStorage.getItem(PREVIEW_KEY);
   const n = raw ? Number(raw) : NaN;
